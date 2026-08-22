@@ -6997,3 +6997,872 @@ header nav {
         font-size: 1.9rem;
     }
 }
+
+/* ========================================
+   60. FINAL SECTION THEME SYSTEM
+   Shayla portfolio — strict alternating sequence
+   Home G / About W / Experience G / Education W /
+   Skills G / Projects W / Leadership G / Honors W / Contact G
+======================================== */
+
+/* ---------- Shared theme foundations ---------- */
+.section-green,
+.section-white {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.section-green {
+    color: var(--cream);
+    background:
+        radial-gradient(circle at 82% 24%, rgba(167, 243, 208, 0.18), transparent 34%),
+        radial-gradient(circle at 18% 78%, rgba(121, 217, 166, 0.20), transparent 38%),
+        radial-gradient(circle at 48% 36%, rgba(255, 255, 255, 0.055), transparent 34%),
+        linear-gradient(135deg, #145A3E 0%, #1E6F50 52%, #27845F 100%) !important;
+}
+
+.section-white {
+    color: var(--section-text);
+    background:
+        radial-gradient(circle at 82% 26%, rgba(121, 217, 166, 0.18), transparent 35%),
+        radial-gradient(circle at 18% 76%, rgba(30, 111, 80, 0.10), transparent 40%),
+        radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.88), transparent 36%),
+        linear-gradient(135deg, #F7FCF9 0%, #EDF7F1 52%, #E3F1E9 100%) !important;
+}
+
+.section-green::before,
+.section-white::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.section-green::before {
+    background:
+        linear-gradient(120deg, rgba(255, 255, 255, 0.065), transparent 32%, rgba(167, 243, 208, 0.055)),
+        radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.10), transparent 58%);
+}
+
+.section-white::before {
+    background:
+        linear-gradient(120deg, rgba(255, 255, 255, 0.42), transparent 34%, rgba(121, 217, 166, 0.045)),
+        radial-gradient(ellipse at 50% 100%, rgba(20, 90, 62, 0.055), transparent 58%);
+}
+
+.section-green > *,
+.section-white > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* ---------- Exact section assignment ---------- */
+#home,
+#experience,
+#skills,
+#leadership,
+#contact {
+    color: var(--cream);
+    background:
+        radial-gradient(circle at 82% 24%, rgba(167, 243, 208, 0.18), transparent 34%),
+        radial-gradient(circle at 18% 78%, rgba(121, 217, 166, 0.20), transparent 38%),
+        radial-gradient(circle at 48% 36%, rgba(255, 255, 255, 0.055), transparent 34%),
+        linear-gradient(135deg, #145A3E 0%, #1E6F50 52%, #27845F 100%) !important;
+}
+
+#about,
+#education,
+#projects,
+#honors {
+    color: var(--section-text);
+    background:
+        radial-gradient(circle at 82% 26%, rgba(121, 217, 166, 0.18), transparent 35%),
+        radial-gradient(circle at 18% 76%, rgba(30, 111, 80, 0.10), transparent 40%),
+        radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.88), transparent 36%),
+        linear-gradient(135deg, #F7FCF9 0%, #EDF7F1 52%, #E3F1E9 100%) !important;
+}
+
+/* ---------- Green-section typography ---------- */
+#home h1,
+#experience .experience-title,
+#skills .skills-title,
+#leadership .certifications-title,
+#contact .contact-title {
+    color: var(--cream) !important;
+}
+
+#experience .experience-subtitle,
+#skills .skills-subtitle,
+#leadership .certifications-subtitle,
+#contact .contact-subtitle {
+    color: var(--cyber-blue) !important;
+}
+
+#experience .experience-intro,
+#skills .skills-intro,
+#leadership .certifications-intro,
+#contact .contact-intro {
+    color: var(--white-soft) !important;
+}
+
+/* ---------- White-section typography ---------- */
+#about .about-title,
+#education .experience-title,
+#projects .portfolio-title,
+#honors .certifications-title {
+    color: var(--section-heading) !important;
+}
+
+#about .about-subtitle,
+#education .experience-subtitle,
+#projects .portfolio-subtitle,
+#honors .certifications-subtitle {
+    color: var(--emerald-dark) !important;
+}
+
+#education .experience-intro,
+#projects .portfolio-intro,
+#honors .certifications-intro {
+    color: rgba(32, 55, 44, 0.90) !important;
+}
+
+/* ---------- Green-section glass cards ---------- */
+#experience .timeline-item,
+#experience .featured-experience,
+#skills .skills-card,
+#leadership .certification-card,
+#contact .contact-main-card,
+#contact .contact-item,
+#contact .social-btn {
+    background:
+        linear-gradient(155deg, rgba(244, 251, 247, 0.17), rgba(244, 251, 247, 0.09)) !important;
+    border: 1px solid rgba(167, 243, 208, 0.30) !important;
+    box-shadow:
+        0 18px 42px rgba(11, 51, 36, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
+    backdrop-filter: blur(14px);
+}
+
+#experience .timeline-item h3,
+#experience .timeline-item h4,
+#experience .timeline-item p,
+#experience .timeline-item li,
+#skills .skills-card h3,
+#leadership .certification-card h3,
+#leadership .certification-card p {
+    color: var(--cream) !important;
+}
+
+#experience .company-info h4,
+#leadership .certification-provider {
+    color: var(--cyber-blue) !important;
+}
+
+#experience .company-info span,
+#experience .experience-tools li,
+#skills .skills-list li,
+#leadership .certification-status {
+    color: #E7FFF2 !important;
+    background: rgba(167, 243, 208, 0.10) !important;
+    border-color: rgba(167, 243, 208, 0.27) !important;
+}
+
+#experience .company-logo,
+#skills .skills-card i,
+#leadership .certification-icon {
+    color: var(--cyber-blue) !important;
+    background: rgba(11, 51, 36, 0.72) !important;
+    border-color: rgba(167, 243, 208, 0.34) !important;
+    box-shadow: 0 0 18px rgba(167, 243, 208, 0.14) !important;
+}
+
+#experience .timeline-item::before {
+    background: linear-gradient(90deg, var(--cyber-blue), var(--emerald-soft), var(--cyber-blue)) !important;
+}
+
+#experience .company-header {
+    border-bottom-color: rgba(167, 243, 208, 0.20) !important;
+}
+
+#experience .experience-divider,
+#skills .skills-card h3::after,
+#leadership .certification-divider {
+    background: linear-gradient(90deg, transparent, rgba(167, 243, 208, 0.48), transparent) !important;
+}
+
+/* ---------- White-section cards ---------- */
+#about .about-text-card,
+#about .about-bubble,
+#education .timeline-item,
+#education .featured-experience,
+#education .education-card,
+#projects .project-card,
+#honors .certification-card {
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.86), rgba(235, 244, 239, 0.78)) !important;
+    border: 1px solid rgba(30, 111, 80, 0.22) !important;
+    box-shadow:
+        0 16px 36px rgba(11, 51, 36, 0.13),
+        inset 0 1px 0 rgba(255, 255, 255, 0.76) !important;
+    backdrop-filter: blur(12px);
+}
+
+#about .about-text-card p,
+#about .about-bubble h4,
+#about .about-bubble p,
+#education .timeline-item h3,
+#education .timeline-item h4,
+#education .timeline-item p,
+#education .timeline-item li,
+#projects .project-card h3,
+#projects .project-card p,
+#projects .project-highlights li,
+#honors .certification-card h3,
+#honors .certification-card p {
+    color: var(--section-text) !important;
+}
+
+#education .company-info h4,
+#projects .project-group-header span,
+#honors .certification-provider {
+    color: var(--emerald-dark) !important;
+}
+
+#education .company-info span,
+#education .experience-tools li,
+#projects .project-tools li,
+#honors .certification-status {
+    color: var(--emerald-dark) !important;
+    background: rgba(30, 111, 80, 0.09) !important;
+    border-color: rgba(30, 111, 80, 0.18) !important;
+}
+
+#education .timeline-item::before,
+#projects .project-card::before {
+    background: linear-gradient(90deg, var(--emerald-dark), var(--emerald-main), var(--emerald-bright)) !important;
+}
+
+#honors .certification-icon {
+    color: var(--emerald-dark) !important;
+    background: rgba(30, 111, 80, 0.10) !important;
+    border-color: rgba(30, 111, 80, 0.20) !important;
+    box-shadow: 0 8px 18px rgba(14, 59, 42, 0.10) !important;
+}
+
+/* ---------- Hover behavior stays inside each theme ---------- */
+#experience .timeline-item:hover,
+#skills .skills-card:hover,
+#leadership .certification-card:hover,
+#contact .contact-item:hover,
+#contact .social-btn:hover {
+    border-color: rgba(167, 243, 208, 0.52) !important;
+    box-shadow:
+        0 22px 48px rgba(11, 51, 36, 0.27),
+        0 0 26px rgba(167, 243, 208, 0.16) !important;
+}
+
+#education .timeline-item:hover,
+#projects .project-card:hover,
+#honors .certification-card:hover,
+#about .about-text-card:hover,
+#about .about-bubble:hover {
+    border-color: rgba(30, 111, 80, 0.36) !important;
+    box-shadow:
+        0 20px 40px rgba(11, 51, 36, 0.16),
+        0 0 0 1px rgba(30, 111, 80, 0.06) !important;
+}
+
+/* ---------- Responsive safeguards for the nine-tab header ---------- */
+@media (max-width: 1380px) {
+    header { padding-left: 5.5%; padding-right: 5.5%; }
+    .navlist { gap: clamp(0.85rem, 1.45vw, 1.55rem); }
+    .navlist a { font-size: clamp(0.76rem, 0.68vw, 0.88rem); }
+}
+
+@media (max-width: 1180px) {
+    header { padding-left: 4%; padding-right: 4%; }
+    .navlist { gap: 0.78rem; }
+    .navlist a { font-size: 0.74rem; }
+}
+
+@media (max-width: 1040px) {
+    #menu-icon { display: flex; }
+}
+
+/* ---------- Theme-safe tablet scaling ---------- */
+@media (max-width: 900px) {
+    #experience .timeline,
+    #education .timeline {
+        grid-template-columns: 1fr;
+    }
+
+    #skills .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #leadership .certifications-grid,
+    #honors .certifications-grid {
+        width: min(100%, 760px);
+    }
+}
+
+/* ---------- Theme-safe phone scaling ---------- */
+@media (max-width: 600px) {
+    #skills .skills-grid { grid-template-columns: 1fr; }
+
+    #experience .timeline-item,
+    #education .timeline-item,
+    #skills .skills-card,
+    #projects .project-card,
+    #leadership .certification-card,
+    #honors .certification-card,
+    #contact .contact-main-card {
+        border-radius: 22px;
+    }
+
+    #leadership .certification-card,
+    #honors .certification-card {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- Very small phones ---------- */
+@media (max-width: 390px) {
+    section { padding-left: 5%; padding-right: 5%; }
+
+    #experience .timeline-item,
+    #education .timeline-item,
+    #skills .skills-card,
+    #projects .project-card,
+    #leadership .certification-card,
+    #honors .certification-card,
+    #contact .contact-main-card {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* ---------- Short-height displays / landscape phones ---------- */
+@media (max-height: 620px) and (orientation: landscape) {
+    #home,
+    #about,
+    #experience,
+    #education,
+    #skills,
+    #projects,
+    #leadership,
+    #honors,
+    #contact {
+        min-height: auto;
+    }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* ========================================
+   HTML Asset Compatibility Patch
+   Necessary styling for image-based cards
+   ======================================== */
+
+/* Experience + Education image containers */
+.company-image {
+    width: 66px;
+    height: 66px;
+    flex: 0 0 66px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 1px solid rgba(30, 111, 80, 0.20);
+    background: rgba(244, 251, 247, 0.92);
+    box-shadow: 0 7px 14px rgba(32, 55, 44, 0.11);
+}
+
+.company-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+}
+
+#experience .company-image {
+    background: rgba(244, 251, 247, 0.96);
+    border-color: rgba(167, 243, 208, 0.30);
+    box-shadow: 0 8px 20px rgba(11, 51, 36, 0.20);
+}
+
+#education .company-image {
+    background: #FFFFFF;
+    border-color: rgba(30, 111, 80, 0.20);
+}
+
+#education .education-image {
+    width: 72px;
+    height: 72px;
+    flex-basis: 72px;
+}
+
+/* Leadership organization images */
+#leadership .certification-image {
+    width: 76px;
+    height: 76px;
+    flex: 0 0 76px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    align-self: start;
+    border-radius: 20px;
+    background: rgba(244, 251, 247, 0.96);
+    border: 1px solid rgba(167, 243, 208, 0.34);
+    box-shadow: 0 8px 20px rgba(11, 51, 36, 0.20);
+}
+
+#leadership .certification-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+}
+
+#leadership .leadership-card {
+    grid-template-columns: 76px minmax(0, 1fr);
+    align-items: start;
+}
+
+/* Honors remain icon-based */
+#honors .certification-icon {
+    flex: 0 0 66px;
+}
+
+#honors .certification-icon i {
+    line-height: 1;
+}
+
+/* Keep image/card geometry controlled as screens narrow */
+@media (max-width: 1100px) {
+    .company-image {
+        width: 62px;
+        height: 62px;
+        flex-basis: 62px;
+        border-radius: 17px;
+    }
+
+    #education .education-image {
+        width: 68px;
+        height: 68px;
+        flex-basis: 68px;
+    }
+
+    #leadership .certification-image {
+        width: 70px;
+        height: 70px;
+        flex-basis: 70px;
+        border-radius: 18px;
+    }
+
+    #leadership .leadership-card {
+        grid-template-columns: 70px minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .company-header {
+        align-items: flex-start;
+        gap: 0.85rem;
+    }
+
+    .company-image {
+        width: 58px;
+        height: 58px;
+        flex-basis: 58px;
+        border-radius: 16px;
+    }
+
+    #education .education-image {
+        width: 62px;
+        height: 62px;
+        flex-basis: 62px;
+    }
+
+    #leadership .leadership-card {
+        grid-template-columns: 60px minmax(0, 1fr);
+        gap: 0.9rem;
+    }
+
+    #leadership .certification-image {
+        width: 60px;
+        height: 60px;
+        flex-basis: 60px;
+        border-radius: 16px;
+    }
+
+    #leadership .certification-heading {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    #leadership .certification-status {
+        white-space: normal;
+    }
+
+    #honors .certification-card {
+        grid-template-columns: 58px minmax(0, 1fr);
+        gap: 0.9rem;
+    }
+
+    #honors .certification-icon {
+        width: 58px;
+        height: 58px;
+        flex-basis: 58px;
+        border-radius: 16px;
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 430px) {
+    .company-header {
+        gap: 0.72rem;
+    }
+
+    .company-image,
+    #education .education-image {
+        width: 52px;
+        height: 52px;
+        flex-basis: 52px;
+        border-radius: 14px;
+    }
+
+    #leadership .leadership-card,
+    #honors .certification-card {
+        grid-template-columns: 1fr;
+    }
+
+    #leadership .certification-image,
+    #honors .certification-icon {
+        width: 56px;
+        height: 56px;
+        flex-basis: 56px;
+        margin-bottom: 0.1rem;
+        border-radius: 15px;
+    }
+
+    #leadership .certification-content,
+    #honors .certification-content {
+        width: 100%;
+    }
+}
+
+@media (max-width: 360px) {
+    .company-image,
+    #education .education-image {
+        width: 48px;
+        height: 48px;
+        flex-basis: 48px;
+    }
+
+    #leadership .certification-image,
+    #honors .certification-icon {
+        width: 52px;
+        height: 52px;
+        flex-basis: 52px;
+    }
+}
+
+
+/* ========================================
+   Honors Section Refinement
+   Light-section flow matching the portfolio
+   ======================================== */
+
+#honors {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    min-height: calc(100vh - var(--header-height));
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    background:
+        radial-gradient(circle at 12% 22%, rgba(255, 214, 166, 0.20), transparent 34%),
+        radial-gradient(circle at 80% 28%, rgba(167, 243, 208, 0.14), transparent 34%),
+        radial-gradient(circle at 78% 78%, rgba(20, 90, 62, 0.15), transparent 42%),
+        linear-gradient(135deg, #6D7C96 0%, #7F8EA8 52%, #9AA8BF 100%);
+}
+
+#honors::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        linear-gradient(120deg, rgba(255, 255, 255, 0.08), transparent 32%, rgba(167, 243, 208, 0.06)),
+        radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.12), transparent 55%);
+}
+
+#honors > * {
+    position: relative;
+    z-index: 2;
+}
+
+#honors .honors-header {
+    max-width: 900px;
+    margin: 0 auto 2.1rem;
+    text-align: center;
+}
+
+#honors .certifications-subtitle {
+    color: var(--emerald-dark);
+}
+
+#honors .certifications-title {
+    color: var(--section-heading);
+}
+
+#honors .certifications-intro {
+    max-width: 760px;
+    color: rgba(32, 55, 44, 0.90);
+}
+
+#honors .honors-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 1.15rem;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+#honors .honor-card {
+    position: relative;
+    min-width: 0;
+    min-height: 220px;
+    padding: 1.4rem;
+    overflow: hidden;
+    grid-template-columns: 66px minmax(0, 1fr);
+    gap: 1.1rem;
+    align-items: start;
+    border-radius: var(--radius-lg);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(242, 249, 245, 0.96),
+            rgba(229, 242, 235, 0.93)
+        );
+    border: 1.5px solid rgba(30, 111, 80, 0.32);
+    box-shadow:
+        0 14px 28px rgba(32, 55, 44, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+}
+
+#honors .honor-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background:
+        linear-gradient(
+            90deg,
+            var(--emerald-dark),
+            var(--emerald-main),
+            #2FBF71
+        );
+}
+
+#honors .honor-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(30, 111, 80, 0.48);
+    box-shadow:
+        0 20px 38px rgba(32, 55, 44, 0.19),
+        0 0 0 1px rgba(30, 111, 80, 0.10);
+}
+
+#honors .certification-icon {
+    width: 66px;
+    height: 66px;
+    flex: 0 0 66px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--emerald-dark);
+    background: rgba(30, 111, 80, 0.10);
+    border: 1px solid rgba(30, 111, 80, 0.20);
+    border-radius: 18px;
+    font-size: 1.9rem;
+    box-shadow: 0 7px 14px rgba(32, 55, 44, 0.10);
+}
+
+#honors .certification-icon i {
+    line-height: 1;
+}
+
+#honors .certification-content {
+    min-width: 0;
+}
+
+#honors .certification-provider {
+    color: var(--emerald-dark);
+    margin-bottom: 0.22rem;
+}
+
+#honors .certification-content h3 {
+    color: var(--section-heading);
+    font-size: 1.05rem;
+    line-height: 1.35;
+    font-weight: 800;
+    margin-bottom: 0.45rem;
+}
+
+#honors .certification-status {
+    display: inline-flex;
+    width: fit-content;
+    margin-bottom: 0.7rem;
+    padding: 0.28rem 0.62rem;
+    color: var(--emerald-dark);
+    background: rgba(30, 111, 80, 0.09);
+    border: 1px solid rgba(30, 111, 80, 0.17);
+    border-radius: 999px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: normal;
+}
+
+#honors .certification-content p {
+    color: rgba(32, 55, 44, 0.92);
+    font-size: 0.78rem;
+    line-height: 1.58;
+    opacity: 1;
+}
+
+/* Honors responsive flow */
+@media (max-width: 1100px) {
+    #honors .honors-grid {
+        max-width: 1000px;
+        gap: 1rem;
+    }
+
+    #honors .honor-card {
+        grid-template-columns: 62px minmax(0, 1fr);
+        gap: 1rem;
+        padding: 1.3rem;
+    }
+
+    #honors .certification-icon {
+        width: 62px;
+        height: 62px;
+        flex-basis: 62px;
+        border-radius: 17px;
+    }
+}
+
+@media (max-width: 900px) {
+    #honors .honors-grid {
+        grid-template-columns: 1fr;
+        max-width: 760px;
+    }
+
+    #honors .honor-card {
+        min-height: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    #honors {
+        padding-top: 3.2rem;
+        padding-bottom: 3.2rem;
+    }
+
+    #honors .honors-header {
+        margin-bottom: 1.7rem;
+    }
+
+    #honors .honor-card {
+        grid-template-columns: 58px minmax(0, 1fr);
+        gap: 0.9rem;
+        padding: 1.15rem;
+        border-radius: 22px;
+    }
+
+    #honors .certification-icon {
+        width: 58px;
+        height: 58px;
+        flex-basis: 58px;
+        border-radius: 16px;
+        font-size: 1.7rem;
+    }
+
+    #honors .certification-content h3 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 430px) {
+    #honors {
+        padding-top: 2.8rem;
+        padding-bottom: 2.8rem;
+    }
+
+    #honors .honors-grid {
+        gap: 0.9rem;
+    }
+
+    #honors .honor-card {
+        grid-template-columns: 1fr;
+        gap: 0.72rem;
+        padding: 1.05rem;
+    }
+
+    #honors .certification-icon {
+        width: 56px;
+        height: 56px;
+        flex-basis: 56px;
+        margin-bottom: 0.1rem;
+        border-radius: 15px;
+    }
+
+    #honors .certification-content {
+        width: 100%;
+    }
+
+    #honors .certification-status {
+        margin-bottom: 0.62rem;
+    }
+
+    #honors .certification-content p {
+        font-size: 0.75rem;
+        line-height: 1.55;
+    }
+}
+
+@media (max-width: 360px) {
+    #honors .honor-card {
+        padding: 0.95rem;
+    }
+
+    #honors .certification-icon {
+        width: 52px;
+        height: 52px;
+        flex-basis: 52px;
+        font-size: 1.55rem;
+    }
+}

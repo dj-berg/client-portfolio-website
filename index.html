@@ -27,11 +27,11 @@
     -->
 
     <!-- Favicons -->
-    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="manifest" href="site.webmanifest">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicons/favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="favicons/favicon.svg">
+    <link rel="shortcut icon" href="favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+    <link rel="manifest" href="favicons/site.webmanifest">
 
     <meta name="theme-color" content="#165D3D">
     <meta name="msapplication-TileColor" content="#165D3D">
@@ -68,6 +68,21 @@
     <link
         href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
         rel="stylesheet">
+
+    <!--
+        Repository asset layout:
+        - images/: portraits, experience, education, and leadership images
+        - files/: resume
+        - favicons/: favicon assets
+        Honors intentionally use generic Boxicons rather than image assets.
+    -->
+
+<!-- Alternating section backgrounds -->
+    <style>
+        section.section-green { background-color: #165D3D; }
+        section.section-white { background-color: #FFFFFF; }
+    </style>
+
 </head>
 
 <body>
@@ -82,12 +97,12 @@
             <ul class="navlist">
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#focus">Focus Areas</a></li>
                 <li><a href="#experience">Experience</a></li>
-                <li><a href="#leadership">Leadership</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#education">Education</a></li>
+                <li><a href="#leadership">Leadership &amp; Activities</a></li>
+                <li><a href="#honors">Honors</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -103,12 +118,12 @@
 
 
     <!-- HOME SECTION -->
-    <section id="home" class="home">
+    <section id="home" class="section-green home">
 
         <div class="home-content">
 
             <span class="hero-kicker">
-                Finance • Wealth Management • Leadership
+                Finance • Supply Chain Management • Leadership
             </span>
 
             <h1>Hi! I'm Shayla Bernal</h1>
@@ -116,25 +131,24 @@
             <!-- Mobile Profile Image -->
             <div class="profile-inline">
                 <img
-                    src="home.png"
+                    src="images/home.png"
                     alt="Shayla Bernal portrait"
                     decoding="async">
             </div>
 
             <p>
-                I'm a Finance and Supply Chain Management student at Arizona State University's
-                W. P. Carey School of Business with experience in wealth management, customer
-                service, student mentorship, and campus leadership. I enjoy helping people,
-                building strong relationships, and developing the financial, operational, and
-                communication skills needed to create meaningful value in business.
+                I'm pursuing Bachelor of Science degrees in Finance and Supply Chain Management at Arizona State University's
+                W. P. Carey School of Business. My experience includes a wealth management internship,
+                facilitating WPC 101 sessions for incoming business students, serving as a Business Ambassador,
+                and customer-facing work at Vane's Cafe.
             </p>
 
             <div class="hero-tags">
                 <span>Wealth Management</span>
-                <span>Financial Analysis</span>
-                <span>Client Relations</span>
+                <span>Financial Decision-Making</span>
+                <span>Financial Planning</span>
                 <span>Leadership</span>
-                <span>Student Ambassador</span>
+                <span>Business Ambassador</span>
             </div>
 
             <div class="btn-box">
@@ -145,7 +159,7 @@
 
                 <!-- Replace resume.pdf when Shayla's resume is ready. -->
                 <a
-                    href="resume.pdf"
+                    href="files/resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="btn">
@@ -162,7 +176,7 @@
             <div class="img-box">
 
                 <img
-                    src="home.png"
+                    src="images/home.png"
                     alt="Shayla Bernal portrait"
                     decoding="async">
 
@@ -190,7 +204,7 @@
 
 
     <!-- ABOUT SECTION -->
-    <section id="about" class="about">
+    <section id="about" class="section-white about">
 
         <div class="about-layout">
 
@@ -232,7 +246,7 @@
                     </div>
 
                     <img
-                        src="about.png"
+                        src="images/about.png"
                         alt="Shayla Bernal professional portrait"
                         class="about-photo"
                         loading="lazy"
@@ -247,13 +261,13 @@
                     <div class="about-bubble bubble-interests">
                         <i class='bx bx-line-chart'></i>
                         <h4>Finance</h4>
-                        <p>Financial Analysis • Strategy</p>
+                        <p>Financial Decisions • Investments</p>
                     </div>
 
                     <div class="about-bubble bubble-focus">
                         <i class='bx bx-package'></i>
                         <h4>Supply Chain</h4>
-                        <p>Operations • Logistics</p>
+                        <p>B.S. Supply Chain Management</p>
                     </div>
 
                 </div>
@@ -262,11 +276,11 @@
             <div class="about-right">
 
                 <span class="about-subtitle">
-                    Finance • Service • Leadership
+                    Finance • Supply Chain • Leadership
                 </span>
 
                 <h2 class="about-title">
-                    Building a Career Through Finance, Leadership, and Service
+                    Finance, Supply Chain Management, and Leadership
                 </h2>
 
                 <div class="about-text-card">
@@ -274,23 +288,20 @@
                     <p>
                         I'm pursuing Bachelor of Science degrees in Finance and Supply Chain
                         Management at Arizona State University's W. P. Carey School of Business.
-                        This combination allows me to understand both the financial decisions
-                        organizations make and the operational systems that help them succeed.
+                        My studies reflect an interest in analytical and strategic business work, including
+                        financial decisions, resource allocation, investment evaluation, and long-term value.
                     </p>
 
                     <p>
-                        My experience in wealth management, customer service, student mentorship,
-                        and campus leadership has strengthened my ability to communicate clearly,
-                        anticipate needs, build relationships, and support people as they work
-                        toward meaningful goals.
+                        My experience includes working directly with the president of a wealth management firm,
+                        facilitating weekly sessions for incoming business students, representing W. P. Carey
+                        as a Business Ambassador, and serving customers at Vane's Cafe.
                     </p>
 
                     <p>
-                        As I continue developing professionally, I'm especially interested in
-                        finance, financial planning, wealth management, client relationships,
-                        supply chain, and business leadership. I value continuous growth,
-                        professionalism, service, and work that creates a positive impact for
-                        individuals, teams, and organizations.
+                        Through these academic, professional, and campus experiences, I have continued developing
+                        leadership, communication, presentation, and relationship-building skills while
+                        building experience connected to finance and business.
                     </p>
 
                     <!--
@@ -310,115 +321,8 @@
     </section>
 
 
-    <!-- FOCUS AREAS SECTION -->
-    <section id="focus" class="focus">
-
-        <div class="focus-header">
-            <span class="focus-subtitle">Professional Direction</span>
-
-            <h2 class="focus-title">Focus Areas</h2>
-
-            <p class="focus-intro">
-                Areas that reflect my academic background, professional experience,
-                leadership roles, and continued interest in helping people and
-                organizations make thoughtful business decisions.
-            </p>
-        </div>
-
-        <div class="focus-grid">
-
-            <article class="focus-card">
-                <i class='bx bx-line-chart' aria-hidden="true"></i>
-
-                <h3>Financial Planning</h3>
-
-                <p>
-                    Developing a strong foundation in financial decision-making,
-                    planning, analysis, and the ways individuals and organizations
-                    can use financial resources to work toward long-term goals.
-                </p>
-
-                <div class="focus-divider" aria-hidden="true"></div>
-
-                <ul class="focus-tools" aria-label="Financial planning focus topics">
-                    <li>Financial Planning</li>
-                    <li>Financial Analysis</li>
-                    <li>Managerial Finance</li>
-                    <li>Goal-Oriented Decisions</li>
-                </ul>
-            </article>
-
-            <article class="focus-card">
-                <i class='bx bx-wallet' aria-hidden="true"></i>
-
-                <h3>Wealth Management</h3>
-
-                <p>
-                    Building knowledge of client development, financial services,
-                    asset management, insurance, and the relationship-centered work
-                    involved in helping clients pursue their financial goals.
-                </p>
-
-                <div class="focus-divider" aria-hidden="true"></div>
-
-                <ul class="focus-tools" aria-label="Wealth management focus topics">
-                    <li>Client Development</li>
-                    <li>Asset Management</li>
-                    <li>Financial Services</li>
-                    <li>Insurance Products</li>
-                    <li>Relationship Building</li>
-                </ul>
-            </article>
-
-            <article class="focus-card">
-                <i class='bx bx-conversation' aria-hidden="true"></i>
-
-                <h3>Client Relationships</h3>
-
-                <p>
-                    Strengthening the communication, listening, service, and
-                    relationship-building skills needed to understand client needs
-                    and provide thoughtful, professional support.
-                </p>
-
-                <div class="focus-divider" aria-hidden="true"></div>
-
-                <ul class="focus-tools" aria-label="Client relationship focus topics">
-                    <li>Customer Service</li>
-                    <li>Needs Assessment</li>
-                    <li>Professional Communication</li>
-                    <li>Client Support</li>
-                </ul>
-            </article>
-
-            <article class="focus-card">
-                <i class='bx bx-buildings' aria-hidden="true"></i>
-
-                <h3>Leadership & Operations</h3>
-
-                <p>
-                    Applying leadership, organization, teamwork, and operational
-                    awareness to create productive environments, support others,
-                    and help teams deliver a consistent experience.
-                </p>
-
-                <div class="focus-divider" aria-hidden="true"></div>
-
-                <ul class="focus-tools" aria-label="Leadership and operations focus topics">
-                    <li>Team Leadership</li>
-                    <li>Business Operations</li>
-                    <li>Mentorship</li>
-                    <li>Collaboration</li>
-                </ul>
-            </article>
-
-        </div>
-
-    </section>
-
-
     <!-- EXPERIENCE SECTION -->
-    <section id="experience" class="experience">
+    <section id="experience" class="section-green experience">
 
         <div class="experience-header">
             <span class="experience-subtitle">Professional Background</span>
@@ -437,12 +341,16 @@
 
                 <div class="company-header">
 
+                    <div class="company-image">
+                        <img src="images/m-group.jpg" alt="The M Group & Associates" loading="lazy" decoding="async">
+                    </div>
+
                     <div class="company-info">
                         <h4>The M Group & Associates</h4>
                         <h3>Wealth Management Intern</h3>
                         <div class="company-meta">
                             <span class="company-date">
-                                March 2025 – August 2025
+                                May 2025 – August 2025
                             </span>
 
                             <span class="company-location">
@@ -492,12 +400,16 @@
 
                 <div class="company-header">
 
+                    <div class="company-image">
+                        <img src="images/vane's.png" alt="Vane's Cafe" loading="lazy" decoding="async">
+                    </div>
+
                     <div class="company-info">
                         <h4>Vane's Cafe</h4>
-                        <h3>Manager</h3>
+                        <h3>Server</h3>
                         <div class="company-meta">
                             <span class="company-date">
-                                July 2022 – Present
+                                August 2021 – Present
                             </span>
 
                             <span class="company-location">
@@ -548,442 +460,7 @@
 
 
     <!-- LEADERSHIP & ACTIVITIES SECTION -->
-    <!--
-        Existing "certifications" styling classes are intentionally retained on
-        many elements so the current CSS can be adapted instead of starting over.
-    -->
-    <section id="leadership" class="certifications leadership">
-
-        <div class="certifications-header leadership-header">
-            <span class="certifications-subtitle">Involvement & Impact</span>
-
-            <h2 class="certifications-title">Leadership & Activities</h2>
-
-            <p class="certifications-intro">
-                Campus leadership, mentorship, professional organizations, and
-                service experiences that reflect initiative, communication,
-                professionalism, and a commitment to others.
-            </p>
-        </div>
-
-        <div class="certifications-grid leadership-grid">
-
-            <article class="certification-card leadership-card">
-
-                <div class="certification-icon">
-                    <i class='bx bx-group' aria-hidden="true"></i>
-                </div>
-
-                <div class="certification-content">
-
-                    <div class="certification-heading">
-                        <div>
-                            <span class="certification-provider">
-                                W. P. Carey School of Business
-                            </span>
-
-                            <h3>Business Ambassador</h3>
-                        </div>
-
-                        <span class="certification-status">
-                            September 2025 – Present
-                        </span>
-                    </div>
-
-                    <p>
-                        Represent W. P. Carey at recruitment events, provide prospective
-                        students with insight into academic programs and campus life,
-                        and help incoming students understand available organizations
-                        and career pathways.
-                    </p>
-
-                    <div class="certification-divider" aria-hidden="true"></div>
-
-                    <ul class="certification-topics" aria-label="Business Ambassador skills">
-                        <li>Public Speaking</li>
-                        <li>Mentorship</li>
-                        <li>Professionalism</li>
-                        <li>Student Engagement</li>
-                    </ul>
-
-                </div>
-
-            </article>
-
-            <article class="certification-card leadership-card">
-
-                <div class="certification-icon">
-                    <i class='bx bx-chalkboard' aria-hidden="true"></i>
-                </div>
-
-                <div class="certification-content">
-
-                    <div class="certification-heading">
-                        <div>
-                            <span class="certification-provider">
-                                W. P. Carey School of Business
-                            </span>
-
-                            <h3>WPC 101 Facilitator</h3>
-                        </div>
-
-                        <span class="certification-status">
-                            May 2025 – December 2025
-                        </span>
-                    </div>
-
-                    <p>
-                        Partnered with faculty to facilitate weekly class sessions
-                        on leadership, teamwork, career readiness, and university
-                        resources while mentoring first-year business students
-                        through their transition to college.
-                    </p>
-
-                    <div class="certification-divider" aria-hidden="true"></div>
-
-                    <ul class="certification-topics" aria-label="WPC 101 Facilitator skills">
-                        <li>Facilitation</li>
-                        <li>Leadership</li>
-                        <li>Career Readiness</li>
-                        <li>Student Support</li>
-                    </ul>
-
-                </div>
-
-            </article>
-
-            <article class="certification-card leadership-card">
-
-                <div class="certification-icon">
-                    <i class='bx bx-network-chart' aria-hidden="true"></i>
-                </div>
-
-                <div class="certification-content">
-
-                    <div class="certification-heading">
-                        <div>
-                            <span class="certification-provider">
-                                Professional Organizations
-                            </span>
-
-                            <h3>Campus Involvement</h3>
-                        </div>
-
-                        <span class="certification-status">
-                            Active Member
-                        </span>
-                    </div>
-
-                    <p>
-                        Participate in the Women's Business Leaders Association
-                        and Financial Management Association to continue building
-                        business knowledge, professional relationships, and
-                        leadership experience.
-                    </p>
-
-                    <div class="certification-divider" aria-hidden="true"></div>
-
-                    <ul class="certification-topics" aria-label="Professional organization involvement">
-                        <li>Networking</li>
-                        <li>Professional Growth</li>
-                        <li>Finance</li>
-                        <li>Leadership</li>
-                    </ul>
-
-                </div>
-
-            </article>
-
-            <article class="certification-card leadership-card">
-
-                <div class="certification-icon">
-                    <i class='bx bx-star' aria-hidden="true"></i>
-                </div>
-
-                <div class="certification-content">
-
-                    <div class="certification-heading">
-                        <div>
-                            <span class="certification-provider">
-                                W. P. Carey Hall of Fame Reception
-                            </span>
-
-                            <h3>Volunteer</h3>
-                        </div>
-
-                        <span class="certification-status">
-                            November 2024
-                        </span>
-                    </div>
-
-                    <p>
-                        Supported a prestigious reception by assisting guests and
-                        inductees, providing directions and personalized service,
-                        and helping maintain a smooth flow of event activities.
-                    </p>
-
-                    <div class="certification-divider" aria-hidden="true"></div>
-
-                    <ul class="certification-topics" aria-label="Volunteer skills">
-                        <li>Guest Services</li>
-                        <li>Event Support</li>
-                        <li>Communication</li>
-                        <li>Professionalism</li>
-                    </ul>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- SKILLS SECTION -->
-    <section id="skills" class="skills">
-
-        <div class="skills-header">
-
-            <span class="skills-subtitle">
-                Business & Professional Strengths
-            </span>
-
-            <h2 class="skills-title">
-                Skills
-            </h2>
-
-            <p class="skills-intro">
-                Skills supported by coursework, professional experience,
-                leadership, customer service, and campus involvement.
-            </p>
-
-        </div>
-
-        <div class="skills-grid">
-
-            <article class="skills-card">
-
-                <i class='bx bx-dollar-circle' aria-hidden="true"></i>
-
-                <h3>Finance</h3>
-
-                <ul class="skills-list" aria-label="Finance skills">
-                    <li>Financial Planning</li>
-                    <li>Financial Analysis</li>
-                    <li>Managerial Finance</li>
-                    <li>Financial Accounting</li>
-                </ul>
-
-            </article>
-
-            <article class="skills-card">
-
-                <i class='bx bx-user-check' aria-hidden="true"></i>
-
-                <h3>Client & Customer Relations</h3>
-
-                <ul class="skills-list" aria-label="Client and customer relations skills">
-                    <li>Customer Service</li>
-                    <li>Client Development</li>
-                    <li>Needs Anticipation</li>
-                    <li>Relationship Building</li>
-                </ul>
-
-            </article>
-
-            <article class="skills-card">
-
-                <i class='bx bx-spreadsheet' aria-hidden="true"></i>
-
-                <h3>Tools & Technology</h3>
-
-                <ul class="skills-list" aria-label="Tools and technology skills">
-                    <li>Microsoft Office Suite</li>
-                    <li>Google Workspace</li>
-                    <li>SQL</li>
-                    <li>Professional Presentations</li>
-                </ul>
-
-            </article>
-
-            <article class="skills-card">
-
-                <i class='bx bx-buildings' aria-hidden="true"></i>
-
-                <h3>Business & Operations</h3>
-
-                <ul class="skills-list" aria-label="Business and operations skills">
-                    <li>Business Operations</li>
-                    <li>Team Collaboration</li>
-                    <li>Organization</li>
-                    <li>Attention to Detail</li>
-                </ul>
-
-            </article>
-
-            <article class="skills-card">
-
-                <i class='bx bx-user-voice' aria-hidden="true"></i>
-
-                <h3>Communication & Leadership</h3>
-
-                <ul class="skills-list" aria-label="Communication and leadership skills">
-                    <li>Public Speaking</li>
-                    <li>Student Mentorship</li>
-                    <li>Class Facilitation</li>
-                    <li>Professional Communication</li>
-                </ul>
-
-            </article>
-
-            <article class="skills-card">
-
-                <i class='bx bx-world' aria-hidden="true"></i>
-
-                <h3>Languages & Strengths</h3>
-
-                <ul class="skills-list" aria-label="Languages and professional strengths">
-                    <li>English</li>
-                    <li>Spanish</li>
-                    <li>Adaptability</li>
-                    <li>Initiative</li>
-                    <li>Professionalism</li>
-                </ul>
-
-            </article>
-
-        </div>
-
-        <!--
-            IMPORTANT:
-            Keep skills limited to tools and abilities Shayla can comfortably
-            discuss in an interview. Add advanced Excel, Tableau, Power BI,
-            Bloomberg, SAP, or other tools only after confirming experience.
-        -->
-
-    </section>
-
-
-    <!-- PROJECTS SECTION -->
-    <section id="projects" class="portfolio projects">
-
-        <div class="portfolio-header">
-            <span class="portfolio-subtitle">Academic & Business Work</span>
-
-            <h2 class="portfolio-title">Projects</h2>
-
-            <p class="portfolio-intro">
-                This section is reserved for selected finance, supply chain,
-                analytical, or business projects. The project titles and outcomes
-                should be replaced once Shayla selects the strongest examples
-                from her coursework.
-            </p>
-        </div>
-
-        <div class="project-group">
-
-            <div class="project-group-header">
-                <span>Finance, Supply Chain & Business</span>
-            </div>
-
-            <div class="portfolio-grid projects-grid">
-
-                <article class="project-card">
-
-                    <div class="project-card-header">
-                        <i class='bx bx-bar-chart-square' aria-hidden="true"></i>
-
-                        <span class="project-status">
-                            To Be Added
-                        </span>
-                    </div>
-
-                    <h3>Finance or Financial Analysis Project</h3>
-
-                    <p>
-                        Add a completed finance project involving analysis,
-                        budgeting, forecasting, financial planning, accounting,
-                        or a business case.
-                    </p>
-
-                    <ul class="project-highlights">
-                        <li>
-                            State the business question, assignment, or objective.
-                        </li>
-
-                        <li>
-                            Explain the tools, research, calculations, or analysis completed.
-                        </li>
-
-                        <li>
-                            Describe the recommendation, presentation, or final outcome.
-                        </li>
-                    </ul>
-
-                    <div class="project-divider" aria-hidden="true"></div>
-
-                    <ul class="project-tools" aria-label="Potential finance project skills">
-                        <li>Finance</li>
-                        <li>Analysis</li>
-                        <li>Microsoft Office</li>
-                        <li>Presentation</li>
-                    </ul>
-
-                </article>
-
-                <article class="project-card">
-
-                    <div class="project-card-header">
-                        <i class='bx bx-package' aria-hidden="true"></i>
-
-                        <span class="project-status">
-                            To Be Added
-                        </span>
-                    </div>
-
-                    <h3>Supply Chain or Operations Project</h3>
-
-                    <p>
-                        Add a completed project involving supply chain management,
-                        operations, logistics, process improvement, or business strategy.
-                    </p>
-
-                    <ul class="project-highlights">
-                        <li>
-                            Describe the operational scenario, case, or challenge.
-                        </li>
-
-                        <li>
-                            Identify Shayla's individual contribution and responsibilities.
-                        </li>
-
-                        <li>
-                            Show the analysis, recommendation, or measurable outcome.
-                        </li>
-                    </ul>
-
-                    <div class="project-divider" aria-hidden="true"></div>
-
-                    <ul class="project-tools" aria-label="Potential supply chain project skills">
-                        <li>Supply Chain</li>
-                        <li>Operations</li>
-                        <li>Teamwork</li>
-                        <li>Business Strategy</li>
-                    </ul>
-
-                </article>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- EDUCATION SECTION -->
-    <!-- Reuses the timeline structure so the existing experience styling can be adapted. -->
-    <section id="education" class="experience education">
+    <section id="education" class="section-white experience education">
 
         <div class="experience-header education-header">
             <span class="experience-subtitle">Academic Background</span>
@@ -1002,7 +479,9 @@
 
                 <div class="company-header">
 
-                    <!-- Add an ASU / W. P. Carey logo later if desired. -->
+                    <div class="company-image education-image">
+                        <img src="images/asu-w.p.-carey.png" alt="Arizona State University W. P. Carey School of Business" loading="lazy" decoding="async">
+                    </div>
                     <div class="company-info">
                         <h4>Arizona State University</h4>
                         <h3>W. P. Carey School of Business</h3>
@@ -1021,7 +500,7 @@
 
                 <p class="experience-summary">
                     Pursuing Bachelor of Science degrees in Finance and Supply Chain
-                    Management while maintaining a 3.99 GPA and participating in
+                    Management while maintaining a 3.98 GPA and participating in
                     leadership, mentorship, and professional business organizations.
                 </p>
 
@@ -1032,8 +511,7 @@
                     </li>
 
                     <li>
-                        GPA: 3.99; relevant coursework includes Financial Accounting
-                        and Managerial Finance.
+                        GPA: 3.98.
                     </li>
 
                     <li>
@@ -1048,7 +526,7 @@
                 <ul class="experience-tools" aria-label="Academic highlights">
                     <li>Finance</li>
                     <li>Supply Chain Management</li>
-                    <li>3.99 GPA</li>
+                    <li>3.98 GPA</li>
                     <li>Scholarships</li>
                     <li>Academic Leadership</li>
                 </ul>
@@ -1060,8 +538,177 @@
     </section>
 
 
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="section-green skills">
+        <div class="skills-header">
+            <span class="skills-subtitle">LinkedIn-Documented Strengths</span>
+            <h2 class="skills-title">Skills</h2>
+            <p class="skills-intro">Skills reflected in my professional experience, campus involvement, and LinkedIn profile.</p>
+        </div>
+        <div class="skills-grid">
+            <article class="skills-card"><i class='bx bx-user-voice' aria-hidden="true"></i><h3>Leadership & Communication</h3><ul class="skills-list"><li>Leadership</li><li>Public Speaking</li><li>Presentation</li><li>Student Guidance</li></ul></article>
+            <article class="skills-card"><i class='bx bx-group' aria-hidden="true"></i><h3>Professional Engagement</h3><ul class="skills-list"><li>Relationship Building</li><li>Student Engagement</li><li>Customer Service</li><li>One-on-One Communication</li></ul></article>
+            <article class="skills-card"><i class='bx bx-wallet' aria-hidden="true"></i><h3>Finance Exposure</h3><ul class="skills-list"><li>Wealth Management</li><li>Financial Planning</li><li>Asset Management</li><li>Insurance</li></ul></article>
+            <article class="skills-card"><i class='bx bx-world' aria-hidden="true"></i><h3>Languages</h3><ul class="skills-list"><li>Spanish — Native/Bilingual</li></ul></article>
+        </div>
+    </section>
+
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="section-white portfolio projects">
+        <div class="portfolio-header">
+            <span class="portfolio-subtitle">Academic & Business Work</span>
+            <h2 class="portfolio-title">Projects</h2>
+            <p class="portfolio-intro">Project details are not currently documented in the LinkedIn information used for this portfolio. Selected projects can be added here once they are confirmed.</p>
+        </div>
+        <div class="project-group">
+            <div class="project-group-header"><span>Projects To Be Added</span></div>
+        </div>
+    </section>
+
+
+    <!-- LEADERSHIP & ACTIVITIES SECTION -->
+    <section id="leadership" class="section-green certifications leadership">
+        <div class="certifications-header leadership-header">
+            <span class="certifications-subtitle">Organizations</span>
+            <h2 class="certifications-title">Leadership &amp; Activities</h2>
+            <p class="certifications-intro">
+                The communities that have helped me grow as a communicator, student, and future business professional.
+            </p>
+        </div>
+
+        <div class="certifications-grid leadership-grid">
+
+            <article class="certification-card leadership-card">
+                <div class="certification-image">
+                    <img src="images/business-ambassadors.png" alt="W. P. Carey Business Ambassadors" loading="lazy" decoding="async">
+                </div>
+
+                <div class="certification-content">
+                    <div class="certification-heading">
+                        <div>
+                            <span class="certification-provider">W. P. Carey School of Business</span>
+                            <h3>Business Ambassadors</h3>
+                        </div>
+                        <span class="certification-status">Member · October 2025 – Present</span>
+                    </div>
+
+                    <p>
+                        I represent the W. P. Carey School of Business at university events and information sessions,
+                        connecting with prospective students and sharing the W. P. Carey experience. The role has given
+                        me meaningful opportunities to strengthen my public speaking, leadership, and communication
+                        through presentations and one-on-one conversations.
+                    </p>
+                </div>
+            </article>
+
+            <article class="certification-card leadership-card">
+                <div class="certification-image">
+                    <img src="images/wbla.png" alt="Women's Business Leaders Association at Arizona State University" loading="lazy" decoding="async">
+                </div>
+
+                <div class="certification-content">
+                    <div class="certification-heading">
+                        <div>
+                            <span class="certification-provider">Arizona State University</span>
+                            <h3>Women’s Business Leaders Association</h3>
+                        </div>
+                        <span class="certification-status">Mentee · September 2025 – Present</span>
+                    </div>
+
+                    <p>
+                        I participate as a mentee in ASU’s Women’s Business Leaders Association, a community centered
+                        on mentorship, networking, leadership, and professional growth. It gives me a space to learn
+                        from others, build relationships, and continue growing within the business community.
+                    </p>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+
+    <!-- HONORS SECTION -->
+    <section id="honors" class="section-white certifications honors">
+        <div class="certifications-header honors-header">
+            <span class="certifications-subtitle">Honors &amp; Awards</span>
+            <h2 class="certifications-title">Honors</h2>
+            <p class="certifications-intro">
+                Recognition that reflects the work I’ve put into my education, leadership, and professional growth.
+            </p>
+        </div>
+
+        <div class="certifications-grid honors-grid">
+
+            <article class="certification-card honor-card">
+                <div class="certification-icon" aria-hidden="true">
+                    <i class='bx bx-award'></i>
+                </div>
+                <div class="certification-content">
+                    <span class="certification-provider">W. P. Carey School of Business</span>
+                    <h3>APS Bill and Mary Kay Post Scholarship</h3>
+                    <span class="certification-status">August 2024</span>
+                    <p>
+                        Receiving this scholarship through W. P. Carey was meaningful recognition as I began my
+                        undergraduate journey at Arizona State University and continued building my foundation in business.
+                    </p>
+                </div>
+            </article>
+
+            <article class="certification-card honor-card">
+                <div class="certification-icon" aria-hidden="true">
+                    <i class='bx bx-medal'></i>
+                </div>
+                <div class="certification-content">
+                    <span class="certification-provider">W. P. Carey School of Business</span>
+                    <h3>McCord Scholars Program Mentee</h3>
+                    <span class="certification-status">August 2024</span>
+                    <p>
+                        I was paired with an upperclassman mentor through a program for 20 W. P. Carey students focused
+                        on academic success and professional development. The experience gave me an early connection to
+                        mentorship and a community focused on making the most of the college experience.
+                    </p>
+                </div>
+            </article>
+
+            <article class="certification-card honor-card">
+                <div class="certification-icon" aria-hidden="true">
+                    <i class='bx bx-award'></i>
+                </div>
+                <div class="certification-content">
+                    <span class="certification-provider">Arizona State University</span>
+                    <h3>Provost's Scholarship</h3>
+                    <span class="certification-status">August 2024</span>
+                    <p>
+                        This merit-based scholarship recognizes academic excellence and leadership potential. It is a
+                        reminder of the academic standard I worked to establish before college and continue carrying
+                        forward at ASU.
+                    </p>
+                </div>
+            </article>
+
+            <article class="certification-card honor-card">
+                <div class="certification-icon" aria-hidden="true">
+                    <i class='bx bx-medal'></i>
+                </div>
+                <div class="certification-content">
+                    <span class="certification-provider">Marcos de Niza High School · Tempe, Arizona</span>
+                    <h3>Arizona Seal of Personal Finance</h3>
+                    <span class="certification-status">May 2024</span>
+                    <p>
+                        I earned the Arizona Seal of Personal Finance when I graduated from Marcos de Niza High School.
+                        The state recognition reflects demonstrated proficiency in personal finance and was an especially
+                        fitting milestone before beginning my studies in Finance at W. P. Carey.
+                    </p>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+
     <!-- CONTACT SECTION -->
-    <section id="contact" class="contact">
+    <section id="contact" class="section-green contact">
 
         <div class="contact-header">
             <span class="contact-subtitle">Let's Connect</span>
@@ -1195,7 +842,7 @@
                         finance, business, and recruiting opportunities.
                     -->
                     <a
-                        href="https://www.linkedin.com/in/shayla-bernal-60a176332/"
+                        href="https://www.linkedin.com/in/shaylabernal/"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="social-btn"
