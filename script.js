@@ -27,6 +27,18 @@ document.addEventListener("DOMContentLoaded", () => {
        02. MOBILE MENU / SCROLL LOCK
     ======================================== */
 
+    function getPageScrollPosition() {
+        if (document.body.style.position === "fixed") {
+            return menuScrollPosition.top;
+        }
+
+        return window.scrollY ||
+            window.pageYOffset ||
+            document.documentElement.scrollTop ||
+            document.body.scrollTop ||
+            0;
+    }
+
     function closeMobileMenu() {
         if (!menuIcon || !navList) return;
 
@@ -63,12 +75,12 @@ document.addEventListener("DOMContentLoaded", () => {
     function openMobileMenu() {
         if (!menuIcon || !navList) return;
 
-        updateActiveSection();
-
         menuScrollPosition = {
-            top: window.scrollY,
-            left: window.scrollX
+            top: getPageScrollPosition(),
+            left: window.scrollX || window.pageXOffset || 0
         };
+
+        updateActiveSection();
 
         navList.classList.add("open");
 
@@ -111,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function getCurrentSection() {
         if (!sections.length) return "";
 
-        const scrollY = window.scrollY || 0;
+        const scrollY = getPageScrollPosition();
         const documentHeight = Math.max(
             document.documentElement.scrollHeight,
             document.body?.scrollHeight || 0
@@ -325,7 +337,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener(
         "scroll",
-        updateActiveSection,
+        () => {
+            if (navList?.classList.contains("open")) return;
+
+            updateActiveSection();
+        },
         {
             passive: true
         }
@@ -333,7 +349,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener(
         "resize",
-        updateActiveSection
+        () => {
+            if (navList?.classList.contains("open")) return;
+
+            updateActiveSection();
+        }
     );
 
 
