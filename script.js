@@ -6,212 +6,359 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================================
-       DOM ELEMENTS
+       01. DOM ELEMENTS
     ========================================= */
 
     const menuIcon = document.getElementById("menu-icon");
     const navList = document.querySelector(".navlist");
+    const header = document.querySelector("header");
 
-    const homeLinks = document.querySelectorAll('a[href="#home"]');
+    const headerLinks = document.querySelectorAll('header a[href^="#"]');
     const navLinks = document.querySelectorAll("header .navlist a");
-    const sections = document.querySelectorAll("section[id]");
-    const projectCards = document.querySelectorAll(".project-card");
+    const sections = document.querySelectorAll("section");
 
-    /* =========================================
-       HELPER FUNCTIONS
-    ========================================= */
+    let menuScrollPosition = {
+        top: 0,
+        left: 0
+    };
+
+
+    /* ========================================
+       02. MOBILE MENU / SCROLL LOCK
+    ======================================== */
 
     function closeMobileMenu() {
         if (!menuIcon || !navList) return;
 
         navList.classList.remove("open");
 
+        document.documentElement.classList.remove("menu-open");
+        document.body.classList.remove("menu-open");
+
+        if (document.body.style.position === "fixed") {
+            document.body.style.position = "";
+            document.body.style.top = "";
+            document.body.style.left = "";
+            document.body.style.right = "";
+            document.body.style.width = "";
+
+            window.scrollTo({
+                top: menuScrollPosition.top,
+                left: menuScrollPosition.left,
+                behavior: "auto"
+            });
+        }
+
         menuIcon.classList.add("bx-menu");
         menuIcon.classList.remove("bx-x");
 
         menuIcon.setAttribute("aria-expanded", "false");
-        menuIcon.setAttribute("aria-label", "Open navigation menu");
+        menuIcon.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
     }
 
-    function updateActiveSection() {
-        if (!sections.length || !navLinks.length) return;
 
-        const headerOffset = 160;
-        let currentSection = sections[0].id;
+    function openMobileMenu() {
+        if (!menuIcon || !navList) return;
 
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - headerOffset;
-            const sectionBottom = sectionTop + section.offsetHeight;
+        updateActiveSection();
 
-            if (
-                window.scrollY >= sectionTop &&
-                window.scrollY < sectionBottom
-            ) {
-                currentSection = section.id;
-            }
-        });
+        menuScrollPosition = {
+            top: window.scrollY,
+            left: window.scrollX
+        };
+
+        navList.classList.add("open");
+
+        document.documentElement.classList.add("menu-open");
+        document.body.classList.add("menu-open");
+
+        document.body.style.position = "fixed";
+        document.body.style.top = `-${menuScrollPosition.top}px`;
+        document.body.style.left = "0";
+        document.body.style.right = "0";
+        document.body.style.width = "100%";
+
+        menuIcon.classList.remove("bx-menu");
+        menuIcon.classList.add("bx-x");
+
+        menuIcon.setAttribute("aria-expanded", "true");
+        menuIcon.setAttribute(
+            "aria-label",
+            "Close navigation menu"
+        );
+    }
+
+
+    /* ========================================
+       03. ACTIVE SECTION TRACKING
+    ======================================== */
+
+    function setActiveSection(sectionId) {
+        if (!sectionId) return;
 
         navLinks.forEach(link => {
-            const linkTarget = link.getAttribute("href");
-
             link.classList.toggle(
                 "active",
-                linkTarget === `#${currentSection}`
+                link.getAttribute("href") === `#${sectionId}`
             );
         });
     }
 
-    /* =========================================
-       MOBILE MENU
-    ========================================= */
 
-    if (menuIcon && navList) {
-        menuIcon.addEventListener("click", () => {
-            const isOpen = navList.classList.toggle("open");
+    function getCurrentSection() {
+        if (!sections.length) return "";
 
-            menuIcon.classList.toggle("bx-menu", !isOpen);
-            menuIcon.classList.toggle("bx-x", isOpen);
+        const scrollY = window.scrollY || 0;
+        const documentHeight = Math.max(
+            document.documentElement.scrollHeight,
+            document.body?.scrollHeight || 0
+        );
+        const maxScrollY = Math.max(
+            0,
+            documentHeight - window.innerHeight
+        );
 
-            menuIcon.setAttribute(
-                "aria-expanded",
-                String(isOpen)
+        if (scrollY <= 0) {
+            return sections[0].id;
+        }
+
+        if (maxScrollY > 0 && scrollY >= maxScrollY - 1) {
+            return sections[sections.length - 1].id;
+        }
+
+        const headerHeight =
+            header?.getBoundingClientRect().height || 0;
+
+        const usableViewportHeight =
+            Math.max(0, window.innerHeight - headerHeight);
+
+        const activationLine =
+            headerHeight +
+            Math.min(
+                120,
+                Math.max(48, usableViewportHeight * 0.2)
             );
 
-            menuIcon.setAttribute(
-                "aria-label",
-                isOpen
-                    ? "Close navigation menu"
-                    : "Open navigation menu"
-            );
-        });
-    }
+        let visibleSection = sections[0].id;
 
-    /* =========================================
-       HOME / LOGO SCROLL
-    ========================================= */
-
-    homeLinks.forEach(link => {
-        link.addEventListener("click", event => {
-            event.preventDefault();
-
-            closeMobileMenu();
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        });
-    });
-
-    /* =========================================
-       CLOSE MOBILE MENU AFTER NAVIGATION
-    ========================================= */
-
-    navLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            if (link.getAttribute("href") !== "#home") {
-                closeMobileMenu();
+        sections.forEach(section => {
+            if (
+                section.getBoundingClientRect().top <=
+                activationLine
+            ) {
+                visibleSection = section.id;
             }
         });
+
+        return visibleSection;
+    }
+
+
+    function updateActiveSection() {
+        if (!sections.length) return;
+
+        setActiveSection(getCurrentSection());
+    }
+
+
+    /* ========================================
+       04. SECTION NAVIGATION
+    ======================================== */
+
+    function scrollToSection(target) {
+        if (!target) return;
+
+        if (target.id === "home") {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "auto"
+            });
+
+            return;
+        }
+
+        const headerHeight =
+            header?.getBoundingClientRect().height || 0;
+
+        const targetY =
+            target.getBoundingClientRect().top +
+            window.scrollY -
+            headerHeight;
+
+        window.scrollTo({
+            top: Math.max(0, targetY),
+            left: window.scrollX,
+            behavior: "auto"
+        });
+    }
+
+
+    function cleanHomeUrl() {
+        if (
+            window.history?.replaceState &&
+            (
+                window.location.pathname !== "/" ||
+                window.location.hash
+            )
+        ) {
+            window.history.replaceState(
+                null,
+                "",
+                "/"
+            );
+        }
+    }
+
+
+    function navigateFromCurrentUrl(shouldScroll = true) {
+        const hash = window.location.hash;
+
+        const sectionId =
+            hash ? hash.slice(1) : "home";
+
+        const target =
+            document.getElementById(sectionId) ||
+            document.getElementById("home");
+
+        if (!target) return;
+
+        if (target.id === "home") {
+            cleanHomeUrl();
+        }
+
+        if (shouldScroll) {
+            scrollToSection(target);
+        }
+
+        setActiveSection(target.id);
+    }
+
+
+    function navigateToSection(link) {
+        const hash = link.getAttribute("href");
+
+        if (!hash || !hash.startsWith("#")) return;
+
+        const target =
+            document.getElementById(hash.slice(1));
+
+        if (!target) return;
+
+        /*
+         * Close and unlock the mobile menu before
+         * calculating the target position so fixed-body
+         * restoration is complete first.
+         */
+        closeMobileMenu();
+
+        setActiveSection(target.id);
+
+        scrollToSection(target);
+
+        if (target.id === "home") {
+            cleanHomeUrl();
+        } else if (
+            window.history?.pushState &&
+            window.location.hash !== hash
+        ) {
+            window.history.pushState(
+                null,
+                "",
+                hash
+            );
+        }
+    }
+
+
+    /* ========================================
+       05. MOBILE MENU TOGGLE
+    ======================================== */
+
+    if (menuIcon && navList) {
+
+        menuIcon.addEventListener("click", () => {
+
+            if (navList.classList.contains("open")) {
+                closeMobileMenu();
+                return;
+            }
+
+            openMobileMenu();
+        });
+    }
+
+
+    /* ========================================
+       06. HEADER / NAVIGATION
+    ======================================== */
+
+    headerLinks.forEach(link => {
+
+        link.addEventListener("click", event => {
+
+            event.preventDefault();
+
+            navigateToSection(link);
+        });
     });
 
-    /* =========================================
-       CLOSE MOBILE MENU ON ESCAPE
-    ========================================= */
+
+    /* ========================================
+       07. KEYBOARD / ACCESSIBILITY
+    ======================================== */
 
     document.addEventListener("keydown", event => {
+
         if (event.key === "Escape") {
             closeMobileMenu();
         }
     });
 
-    /* =========================================
-       OPTIONAL PROJECT CAROUSELS
-       Only runs if a project card contains
-       multiple .project-page elements
-    ========================================= */
 
-    projectCards.forEach(card => {
-        const pages = Array.from(
-            card.querySelectorAll(".project-page")
-        );
-
-        const nextButton = card.querySelector(".project-next");
-
-        if (!nextButton || pages.length <= 1) return;
-
-        let currentPage = 0;
-
-        function showPage(index) {
-            currentPage =
-                (index + pages.length) % pages.length;
-
-            pages.forEach((page, pageIndex) => {
-                const isActive = pageIndex === currentPage;
-
-                page.classList.toggle("active", isActive);
-
-                page.setAttribute(
-                    "aria-hidden",
-                    String(!isActive)
-                );
-            });
-
-            const isSecondaryPage = currentPage > 0;
-
-            card.classList.toggle(
-                "show-documentation",
-                isSecondaryPage
-            );
-
-            nextButton.setAttribute(
-                "aria-label",
-                isSecondaryPage
-                    ? "Return to project overview"
-                    : "View more project details"
-            );
-
-            nextButton.setAttribute(
-                "title",
-                isSecondaryPage
-                    ? "Return to overview"
-                    : "View more details"
-            );
-        }
-
-        nextButton.addEventListener("click", () => {
-            showPage(currentPage + 1);
-        });
-
-        nextButton.addEventListener("keydown", event => {
-            if (event.key === "ArrowRight") {
-                event.preventDefault();
-                showPage(currentPage + 1);
-            }
-
-            if (event.key === "ArrowLeft") {
-                event.preventDefault();
-                showPage(currentPage - 1);
-            }
-        });
-
-        showPage(0);
-    });
-
-    /* =========================================
-       INITIALIZE
-    ========================================= */
+    /* ========================================
+       08. WINDOW EVENTS
+    ======================================== */
 
     window.addEventListener(
         "scroll",
         updateActiveSection,
-        { passive: true }
+        {
+            passive: true
+        }
     );
 
     window.addEventListener(
         "resize",
         updateActiveSection
     );
+
+
+    /* ========================================
+       09. HISTORY / HASH NAVIGATION
+    ======================================== */
+
+    window.addEventListener("popstate", () => {
+
+        closeMobileMenu();
+
+        navigateFromCurrentUrl();
+    });
+
+    window.addEventListener("hashchange", () => {
+
+        navigateFromCurrentUrl();
+    });
+
+
+    /* ========================================
+       10. INITIALIZATION
+    ======================================== */
+
+    navigateFromCurrentUrl(Boolean(window.location.hash));
 
     updateActiveSection();
 });
