@@ -8935,6 +8935,52 @@ textarea:focus-visible {
     }
 }
 
+/* Skills card refinement: preserve the reference layout while letting each
+   row size to its content instead of reserving unnecessary empty height. */
+.skills .skills-card {
+    min-height: 0;
+    padding: clamp(1.25rem, 1.7vw, 1.55rem);
+}
+
+.skills .skills-card h3 {
+    min-height: 0;
+}
+
+.skills .skills-card h3::after {
+    margin-top: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.skills .skills-list {
+    gap: 0.45rem;
+}
+
+@media (min-width: 768px) and (max-width: 1100px) {
+    .skills .skills-card {
+        padding: 1.2rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .skills .skills-card {
+        padding: 1.2rem 1rem 1.1rem;
+    }
+
+    .skills .skills-card h3::after {
+        margin-top: 0.95rem;
+    }
+
+    .skills .skills-list {
+        gap: 0.42rem;
+    }
+}
+
+@media (max-width: 430px) {
+    .skills .skills-card {
+        padding: 1.1rem 0.9rem 1rem;
+    }
+}
+
 /* Home CTA hover states. */
 .home .btn {
     transition: var(--transition);
@@ -10462,7 +10508,7 @@ textarea:focus-visible {
 ======================================== */
 
 html {
-    background: var(--section-dark) !important;
+    background: var(--bg-footer) !important;
 }
 
 body {
@@ -10878,10 +10924,14 @@ header {
     stop-color: var(--forest-green) !important;
 }
 
-#experience .experience-tools li,
-#skills .skills-list li {
+#experience .experience-tools li {
     background: rgba(177,199,182, 0.10) !important;
     border-color: var(--border-subtle) !important;
+}
+
+#skills .skills-list li {
+    background: rgba(111, 161, 127, 0.14) !important;
+    border-color: rgba(143, 190, 155, 0.32) !important;
 }
 
 #skills .skills-card i,
@@ -11219,6 +11269,44 @@ header {
         border-color: var(--border-strong) !important;
         transform: none;
     }
+}
+
+/* Experience accomplishments use the same contained, static check language as Projects. */
+#experience .experience-highlights {
+    gap: 0.65rem;
+}
+
+#experience .experience-highlights li {
+    display: grid;
+    grid-template-columns: 26px minmax(0, 1fr);
+    column-gap: 0.625rem;
+    align-items: start;
+    min-width: 0;
+    padding-left: 0;
+}
+
+#experience .experience-highlights li::before {
+    content: "✓";
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: start;
+    width: 26px;
+    height: 26px;
+    margin: 0;
+    box-sizing: border-box;
+    color: var(--accent-secondary) !important;
+    background: rgba(143,190,155, 0.12) !important;
+    border: 1px solid var(--border-subtle);
+    border-radius: 50%;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 1;
+    text-shadow: none;
+    box-shadow: none;
+    filter: none;
+    transition: none;
 }
 
 @media (max-width: 1199px) {
@@ -11831,8 +11919,8 @@ header {
     }
 }
 
-/* Final Honors treatment: all six awards remain equal peer cards while CSS
-   Grid stretches cards only within each row. */
+/* Final Honors treatment: content-driven rows keep equal-height cards within
+   each row without imposing one shared height across all six awards. */
 #honors .honors-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -11844,15 +11932,14 @@ header {
 }
 
 #honors .honor-card {
-    display: grid;
-    grid-template-columns: 54px minmax(0, 1fr);
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
     width: 100%;
     min-width: 0;
     min-height: 0;
-    height: 100%;
-    gap: 1rem;
-    padding: clamp(1.15rem, 1.8vw, 1.35rem);
+    padding: clamp(1.35rem, 2vw, 1.7rem);
     background: var(--card-bg-supporting) !important;
     border: 1px solid var(--card-border-supporting) !important;
     border-radius: var(--card-radius);
@@ -11865,8 +11952,11 @@ header {
 }
 
 #honors .honor-icon {
-    width: 54px;
-    height: 54px;
+    width: clamp(3.5rem, 4vw, 4rem);
+    height: clamp(3.5rem, 4vw, 4rem);
+    flex: 0 0 auto;
+    margin-inline: auto;
+    margin-bottom: 1.35rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11874,50 +11964,95 @@ header {
     background: rgba(177,199,182, 0.10) !important;
     border: 1px solid var(--border-subtle) !important;
     border-radius: 15px;
-    font-size: 1.5rem;
+    font-size: 1.45rem;
     box-shadow: none;
 }
 
 #honors .honor-content {
     display: flex;
     flex-direction: column;
+    width: 100%;
     min-width: 0;
-    height: 100%;
 }
 
 #honors .honor-content h3 {
-    margin: 0 0 0.45rem;
+    margin: 0;
     color: var(--text-primary) !important;
-    font-size: clamp(0.94rem, 0.35vw + 0.84rem, 1.08rem);
+    font-size: clamp(1.1rem, 1.25vw + 0.15rem, 1.35rem);
     font-weight: 800;
-    line-height: 1.32;
+    line-height: 1.25;
     overflow-wrap: anywhere;
 }
 
+#honors .honor-meta {
+    display: grid;
+    gap: 0.4rem;
+    min-width: 0;
+    margin-top: 0.85rem;
+}
+
+#honors .honor-meta-row {
+    display: grid;
+    grid-template-columns: 1rem minmax(0, 1fr);
+    column-gap: 0.45rem;
+    align-items: start;
+    margin: 0;
+    min-width: 0;
+}
+
+#honors .honor-meta-row > i {
+    justify-self: center;
+    width: 1rem;
+    height: 1rem;
+    margin-top: 0.08rem;
+    color: var(--accent-technical);
+    font-size: 1rem;
+    line-height: 1;
+    text-align: center;
+}
+
+#honors .honor-meta-row > span {
+    min-width: 0;
+    color: inherit;
+    text-align: left;
+}
+
+#honors .honor-role {
+    margin: 0.55rem 0 0;
+    color: var(--text-primary) !important;
+    font-size: 0.78rem;
+    font-weight: 800;
+    line-height: 1.35;
+}
+
 #honors .honor-issuer {
-    margin: 0 0 0.2rem;
-    color: var(--text-secondary) !important;
+    color: var(--text-muted) !important;
     font-size: 0.72rem;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.4;
     overflow-wrap: anywhere;
 }
 
 #honors .honor-date {
-    display: block;
-    margin: 0;
-    color: var(--text-muted) !important;
-    font-size: 0.68rem;
-    font-weight: 600;
+    color: var(--accent-technical) !important;
+    font-size: 0.7rem;
+    font-weight: 500;
     line-height: 1.35;
 }
 
 #honors .honor-description {
-    margin: 0.8rem 0 0;
+    margin: 1.1rem 0 0;
     color: var(--text-secondary) !important;
-    font-size: 0.74rem;
+    opacity: 0.9;
+    font-size: 0.76rem;
     line-height: 1.55;
     overflow-wrap: anywhere;
+}
+
+@media (min-width: 1101px) {
+    #honors .honor-content h3 {
+        min-height: 2.5em;
+    }
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -11951,23 +12086,24 @@ header {
 
     #honors .honor-card {
         height: auto;
-        grid-template-columns: 52px minmax(0, 1fr);
-        gap: 0.85rem;
-        padding: 1.1rem;
+        padding: 1.25rem 1.2rem;
+    }
+
+    #honors .honor-content h3 {
+        min-height: 0;
     }
 
     #honors .honor-icon {
         width: 52px;
         height: 52px;
-        font-size: 1.4rem;
+        margin-inline: auto;
+        font-size: 1.35rem;
     }
 }
 
 @media (max-width: 430px) {
     #honors .honor-card {
-        grid-template-columns: 48px minmax(0, 1fr);
-        gap: 0.7rem;
-        padding: 1rem;
+        padding: 1.1rem;
     }
 
     #honors .honor-icon {
@@ -12003,10 +12139,10 @@ header {
 
 #contact .contact-main-card {
     width: 100%;
-    max-width: 1160px;
+    max-width: 1080px;
     margin-inline: auto;
     padding: clamp(1.35rem, 2.8vw, 2rem);
-    background: var(--card-bg-supporting) !important;
+    background: var(--section-light) !important;
     border: 1px solid var(--card-border-supporting) !important;
     border-radius: var(--card-radius);
     box-shadow: var(--card-shadow-supporting) !important;
@@ -12087,12 +12223,15 @@ header {
 }
 
 #contact .contact-form-group textarea {
-    min-height: 170px;
+    min-height: 165px;
 }
 
 #contact .contact-form-group input::placeholder,
 #contact .contact-form-group textarea::placeholder {
     color: var(--text-muted) !important;
+    font-weight: 400;
+    opacity: 1;
+    text-align: left;
 }
 
 #contact .contact-form-group input:focus,
@@ -12185,9 +12324,9 @@ header {
     align-items: center;
     justify-content: center;
     min-width: 0;
-    min-height: 138px;
-    padding: 1.15rem 1rem;
-    background: var(--bg-deep) !important;
+    min-height: 122px;
+    padding: 1rem;
+    background: var(--forest-green) !important;
     border: 1px solid var(--border-subtle) !important;
     border-radius: var(--card-radius);
     box-shadow: var(--card-shadow-supporting) !important;
@@ -12202,7 +12341,7 @@ header {
 #contact .contact-item i {
     margin-bottom: 0.45rem;
     color: var(--accent-secondary) !important;
-    font-size: 1.9rem;
+    font-size: 1.65rem;
     line-height: 1;
     text-shadow: none;
 }
@@ -12233,7 +12372,7 @@ header {
 @media (hover: hover) and (pointer: fine) {
     #contact .contact-item:hover {
         transform: translateY(-2px);
-        background: var(--bg-deep) !important;
+        background: var(--forest-green) !important;
         border-color: var(--card-border-supporting-hover) !important;
         box-shadow: var(--card-shadow-supporting-hover) !important;
     }
@@ -12250,19 +12389,19 @@ header {
     flex-wrap: wrap;
     gap: 0.9rem;
     width: 100%;
-    margin-top: clamp(1.35rem, 2.5vw, 1.8rem);
+    margin-top: clamp(1rem, 2vw, 1.35rem);
 }
 
 #contact .social-btn {
-    width: 60px;
-    height: 60px;
-    min-height: 60px;
+    width: 54px;
+    height: 54px;
+    min-height: 54px;
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--accent-secondary) !important;
-    background: var(--bg-deep) !important;
+    background: var(--forest-green) !important;
     border: 1px solid var(--border-subtle) !important;
     border-radius: 16px;
     box-shadow: var(--card-shadow-supporting) !important;
@@ -12303,13 +12442,19 @@ header {
 
     #contact .contact-item:hover,
     #contact .social-btn:hover {
-        background: var(--bg-deep) !important;
+        background: var(--forest-green) !important;
         border-color: var(--border-subtle) !important;
         box-shadow: var(--card-shadow-supporting) !important;
     }
 
     #contact .contact-form .contact-email-btn:hover {
         color: var(--text-on-accent) !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1100px) {
+    #contact .contact-item:last-child {
+        grid-column: auto;
     }
 }
 
@@ -12365,6 +12510,17 @@ header {
     }
 }
 
+/* Keep entered Contact text readable while treating placeholders as quiet guidance. */
+#contact .contact-form-group input,
+#contact .contact-form-group textarea {
+    font-size: clamp(0.75rem, calc(0.6875rem + 0.15vw), 0.8125rem);
+}
+
+#contact .contact-form-group input::placeholder,
+#contact .contact-form-group textarea::placeholder {
+    font-size: inherit;
+}
+
 /* Final Activities treatment: two equal secondary cards on wide screens,
    with the same internal flow and no primary/featured activity. */
 #activities .activities-grid {
@@ -12372,22 +12528,22 @@ header {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: stretch;
     gap: clamp(1rem, 2vw, 1.35rem);
-    width: min(100%, 1160px);
-    max-width: 1160px;
+    width: min(100%, 1120px);
+    max-width: 1120px;
     margin-inline: auto;
 }
 
 #activities .activity-card {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: clamp(80px, 7vw, 88px) minmax(0, 1fr);
     align-items: stretch;
     width: 100%;
     min-width: 0;
     height: 100%;
     min-height: 0;
     gap: clamp(0.9rem, 1.7vw, 1.2rem);
-    padding: clamp(1.3rem, 2vw, 1.65rem);
-    background: var(--card-bg-supporting) !important;
+    padding: clamp(1.2rem, 1.7vw, 1.45rem) clamp(1.4rem, 2vw, 1.7rem);
+    background: var(--section-light) !important;
     border: 1px solid var(--card-border-supporting) !important;
     border-radius: var(--card-radius);
     box-shadow: var(--card-shadow-supporting) !important;
@@ -12399,18 +12555,18 @@ header {
 }
 
 #activities .activity-logo-wrap {
-    width: clamp(76px, 7vw, 84px);
-    height: clamp(76px, 7vw, 84px);
-    flex: 0 0 clamp(76px, 7vw, 84px);
+    width: clamp(80px, 7vw, 88px);
+    height: clamp(80px, 7vw, 88px);
     display: flex;
     align-items: center;
     justify-content: center;
     align-self: flex-start;
-    padding: 0.45rem;
+    aspect-ratio: 1 / 1;
+    padding: 0;
     overflow: hidden;
     background: var(--bg-deep);
     border: 1px solid var(--border-subtle);
-    border-radius: 16px;
+    border-radius: var(--radius-md);
     box-shadow: none;
 }
 
@@ -12418,8 +12574,9 @@ header {
     display: block;
     width: 100%;
     height: 100%;
+    aspect-ratio: 1 / 1;
     padding: 0;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
     border-radius: 0;
 }
@@ -12433,7 +12590,7 @@ header {
 }
 
 #activities .activity-type {
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.55rem;
     color: var(--accent-primary) !important;
     font-size: 0.68rem;
     font-weight: 800;
@@ -12443,8 +12600,8 @@ header {
 }
 
 #activities .activity-content h3 {
-    min-height: 0;
-    margin: 0 0 0.55rem;
+    min-height: 2.6em;
+    margin: 0 0 1rem;
     color: var(--text-primary) !important;
     font-size: clamp(1.05rem, 1.25vw, 1.2rem);
     font-weight: 800;
@@ -12459,42 +12616,80 @@ header {
     overflow-wrap: anywhere;
 }
 
+#activities .activity-meta {
+    display: grid;
+    grid-template-columns: 1rem minmax(0, 1fr);
+    column-gap: 0.45rem;
+    row-gap: 0.45rem;
+    width: calc(100% + 0.35rem);
+    min-width: 0;
+    margin-inline-start: -0.35rem;
+    margin-bottom: 1.6rem;
+    align-items: start;
+}
+
+#activities .activity-meta > .activity-meta-spacer,
+#activities .activity-meta > i {
+    grid-column: 1;
+}
+
+#activities .activity-meta > .activity-role,
+#activities .activity-meta > .activity-date,
+#activities .activity-meta > .activity-organization {
+    grid-column: 2;
+    text-align: left;
+}
+
+#activities .activity-meta > i {
+    justify-self: center;
+    align-self: start;
+    width: 1rem;
+    height: 1rem;
+    margin-top: 0.08rem;
+    color: var(--accent-technical);
+    font-size: 1rem;
+    line-height: 1;
+    text-align: center;
+}
+
 #activities .activity-role {
-    color: var(--accent-secondary) !important;
+    color: var(--text-primary) !important;
     font-size: 0.78rem;
     font-weight: 800;
     line-height: 1.35;
 }
 
 #activities .activity-date {
-    margin-top: 0.12rem;
-    color: var(--text-secondary) !important;
+    color: var(--accent-technical) !important;
     font-size: 0.74rem;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.35;
 }
 
 #activities .activity-organization {
-    margin-top: 0.2rem;
-    margin-bottom: 0.95rem;
     color: var(--text-muted) !important;
     font-size: 0.7rem;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.45;
 }
 
-#activities .activity-content > p:not(.activity-role):not(.activity-date):not(.activity-organization) {
+#activities .activity-description {
     margin: 0;
     color: var(--text-secondary) !important;
+    opacity: 0.9;
     font-size: 0.78rem;
-    line-height: 1.6;
+    line-height: 1.5;
+}
+
+#activities .activity-footer {
+    margin-top: auto;
 }
 
 #activities .activity-divider {
     width: 100%;
     height: 1px;
     flex: 0 0 auto;
-    margin: auto 0 0.9rem;
+    margin: 1.75rem 0 1rem;
     background: rgba(177,199,182, 0.22) !important;
 }
 
@@ -12502,7 +12697,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    gap: 0.42rem;
+    gap: 0.55rem 0.42rem;
     margin: 0;
     padding: 0;
 }
@@ -12521,7 +12716,7 @@ header {
 @media (hover: hover) and (pointer: fine) {
     #activities .activity-card:hover {
         transform: translateY(-3px);
-        background: var(--card-bg-supporting) !important;
+        background: var(--section-light) !important;
         border-color: var(--card-border-supporting-hover) !important;
         box-shadow: var(--card-shadow-supporting-hover) !important;
     }
@@ -12530,16 +12725,51 @@ header {
 @media (hover: none), (pointer: coarse) {
     #activities .activity-card:hover {
         transform: none;
-        background: var(--card-bg-supporting) !important;
+        background: var(--section-light) !important;
         border-color: var(--card-border-supporting) !important;
         box-shadow: var(--card-shadow-supporting) !important;
     }
 }
 
-@media (min-width: 768px) and (max-width: 1100px) {
+@media (min-width: 900px) and (max-width: 1100px) {
     #activities .activities-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         width: min(100%, 900px);
+    }
+
+    #activities .activity-card {
+        grid-template-columns: 80px minmax(0, 1fr);
+        gap: 0.95rem;
+        padding: 1.15rem 1.25rem;
+    }
+
+    #activities .activity-logo-wrap {
+        width: 80px;
+        height: 80px;
+        aspect-ratio: 1 / 1;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 899px) {
+    #activities .activities-grid {
+        grid-template-columns: 1fr;
+        width: min(100%, 760px);
+    }
+
+    #activities .activity-card {
+        height: auto;
+    }
+
+    #activities .activity-content {
+        height: auto;
+    }
+
+    #activities .activity-content h3 {
+        min-height: 0;
+    }
+
+    #activities .activity-footer {
+        margin-top: 0;
     }
 }
 
@@ -12549,23 +12779,38 @@ header {
     }
 
     #activities .activity-card {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         align-items: center;
         height: auto;
-        padding: 1.2rem 1rem 1.15rem;
+        padding: 1.2rem 1.1rem 1.15rem;
         text-align: center;
+    }
+
+    #activities .activity-content h3 {
+        min-height: 0;
     }
 
     #activities .activity-logo-wrap {
         width: 76px;
         height: 76px;
-        flex-basis: 76px;
+        aspect-ratio: 1 / 1;
         align-self: center;
+        border-radius: 16px;
     }
 
     #activities .activity-content {
         width: 100%;
         height: auto;
+    }
+
+    #activities .activity-footer {
+        margin-top: 0;
+    }
+
+    #activities .activity-meta {
+        width: 100%;
+        margin-inline-start: 0;
+        text-align: left;
     }
 
     #activities .activity-topics {
@@ -12575,13 +12820,13 @@ header {
 
 @media (max-width: 430px) {
     #activities .activity-card {
-        padding-inline: 0.9rem;
+        padding-inline: 1.1rem;
     }
 
     #activities .activity-logo-wrap {
         width: 70px;
         height: 70px;
-        flex-basis: 70px;
+        aspect-ratio: 1 / 1;
     }
 }
 
@@ -12659,5 +12904,328 @@ header {
     #activities .activity-card:hover,
     #projects .project-card.project-summary-featured .project-repo-btn:hover {
         transform: none;
+    }
+}
+
+/* Responsive alignment audit: once the card presentations stack, center the
+   complete visual unit while keeping desktop information alignment intact. */
+@media (max-width: 1100px) {
+    #honors .honor-card,
+    #honors .honor-content,
+    #honors .honor-content h3,
+    #honors .honor-role,
+    #honors .honor-description {
+        text-align: center;
+    }
+
+    #honors .honor-meta {
+        width: fit-content;
+        max-width: 100%;
+        margin-inline: auto;
+        align-items: center;
+    }
+
+    #honors .honor-meta-row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        width: fit-content;
+        max-width: 100%;
+    }
+
+    #honors .honor-meta-row > i {
+        flex: 0 0 1rem;
+    }
+
+    #honors .honor-meta-row > span {
+        text-align: center;
+    }
+}
+
+@media (max-width: 1199px) {
+    #experience .experience-meta {
+        width: 100%;
+        text-align: center;
+    }
+
+    #experience .experience-meta-item {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        max-width: 100%;
+        margin-inline: 0.2rem;
+        vertical-align: middle;
+    }
+
+    #experience .experience-meta-item > span {
+        min-width: 0;
+        overflow-wrap: anywhere;
+        text-align: center;
+    }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+    #activities .activity-card,
+    #activities .activity-content {
+        text-align: left;
+    }
+
+    #activities .activity-type,
+    #activities .activity-content h3,
+    #activities .activity-role,
+    #activities .activity-date,
+    #activities .activity-organization,
+    #activities .activity-description {
+        text-align: left;
+    }
+
+    #activities .activity-topics {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 899px) {
+    #activities .activity-card {
+        grid-template-columns: 1fr;
+        align-items: center;
+        text-align: center;
+    }
+
+    #activities .activity-logo-wrap,
+    #activities .activity-content {
+        margin-inline: auto;
+    }
+
+    #activities .activity-logo-wrap {
+        align-self: center;
+    }
+
+    #activities .activity-content {
+        width: 100%;
+        height: auto;
+        text-align: center;
+    }
+
+    #activities .activity-meta {
+        grid-template-columns: 1rem minmax(0, max-content);
+        width: fit-content;
+        max-width: 100%;
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    #activities .activity-meta > .activity-meta-spacer {
+        display: none;
+    }
+
+    #activities .activity-meta > .activity-role {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+
+    #activities .activity-meta > .activity-date,
+    #activities .activity-meta > .activity-organization {
+        text-align: center;
+    }
+
+    #activities .activity-topics {
+        justify-content: center;
+    }
+}
+
+/* Education responsive polish: preserve the desktop grouping while letting
+   the centered mobile composition use its available width efficiently. */
+@media (max-width: 1199px) {
+    #education .education-card .education-school-header {
+        gap: 1rem;
+    }
+
+    #education .education-card .education-school-info {
+        width: 100%;
+    }
+
+    #education .education-card .education-school {
+        margin-bottom: 0.55rem;
+    }
+
+    #education .education-card .education-school-info h3 {
+        margin-bottom: 0.5rem;
+    }
+
+    #education .education-card .education-concentration {
+        margin-bottom: 0;
+    }
+
+    #education .education-card .education-meta {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.3rem 0.42rem;
+        width: fit-content;
+        max-width: 100%;
+        margin-top: 1.1rem;
+        margin-inline: auto;
+    }
+
+    #education .education-card .education-details,
+    #education .education-card .education-detail-group,
+    #education .education-card .education-topics {
+        width: 100%;
+        max-width: none;
+        margin-inline: auto;
+    }
+
+    #education .education-card .education-topics {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.42rem 0.55rem;
+    }
+
+    #education .education-card .education-topics li {
+        width: max-content;
+        max-width: 100%;
+        padding: 0.28rem 0.56rem;
+        font-size: 0.64rem;
+        line-height: 1.25;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    #education .education-card .education-meta {
+        flex-wrap: nowrap;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 767px) {
+    #education .education-container {
+        gap: 1.5rem;
+    }
+
+    #education .education-card .education-divider {
+        margin-block: 1.25rem;
+    }
+}
+
+@media (max-width: 430px) {
+    #education .education-card .education-meta {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.25rem 0.42rem;
+        white-space: normal;
+    }
+
+    #education .education-card .education-meta span[aria-hidden="true"] {
+        display: inline;
+    }
+
+    #education .education-card .education-topics {
+        gap: 0.38rem 0.45rem;
+    }
+
+    #education .education-card .education-topics li {
+        padding-inline: 0.5rem;
+        font-size: 0.62rem;
+    }
+}
+
+/* Project feature checks are compact supporting markers, not decorative glow. */
+#projects .project-card.project-summary-featured .project-highlights li {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr);
+    column-gap: 0.5rem;
+    align-items: start;
+    padding-left: 0;
+}
+
+#projects .project-card.project-summary-featured .project-highlights li::before {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: start;
+    width: 22px;
+    height: 22px;
+    margin: 0;
+    box-sizing: border-box;
+    color: var(--accent-primary) !important;
+    background: rgba(143,190,155, 0.12) !important;
+    border: 1px solid var(--border-subtle);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+    text-shadow: none;
+    box-shadow: none;
+    filter: none;
+    transition: none;
+}
+
+/* Shared decorative card hover: use the approved Project card treatment. */
+#projects .project-card,
+#skills .skills-card,
+#activities .activity-card,
+#honors .honor-card,
+#contact .contact-item {
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #projects .project-card:hover,
+    #skills .skills-card:hover,
+    #activities .activity-card:hover,
+    #honors .honor-card:hover,
+    #contact .contact-item:hover {
+        transform: translateY(-3px);
+        border-color: rgba(143,190,155, 0.68) !important;
+        box-shadow:
+            0 22px 44px rgba(16,24,19, 0.24),
+            0 0 24px rgba(143,190,155, 0.14) !important;
+    }
+}
+
+/* Decorative card hover must not persist on touch/no-hover devices. */
+@media (hover: none), (pointer: coarse) {
+    #about .about-text-card,
+    #experience .experience-panel,
+    #education .education-card,
+    #projects .project-card,
+    #skills .skills-card,
+    #activities .activity-card,
+    #honors .honor-card,
+    #contact .contact-item {
+        transition: none;
+    }
+
+    #about .about-text-card:hover,
+    #experience .experience-panel:hover,
+    #education .education-card:hover,
+    #projects .project-card:hover,
+    #skills .skills-card:hover,
+    #activities .activity-card:hover,
+    #honors .honor-card:hover,
+    #contact .contact-item:hover {
+        transform: none !important;
+    }
+
+    #projects .project-card:not(.project-summary-featured):hover {
+        background: var(--surface-hover) !important;
+        border-color: var(--border) !important;
+        box-shadow: 0 12px 26px rgba(16,24,19, 0.16) !important;
+    }
+
+    #skills .skills-card:hover {
+        background: var(--surface) !important;
+        border-color: var(--border) !important;
+        box-shadow: 0 12px 30px rgba(16,24,19, 0.10) !important;
     }
 }
