@@ -11253,24 +11253,6 @@ header {
     }
 }
 
-@media (hover: none), (pointer: coarse) {
-    #projects .project-card.project-summary-featured:hover {
-        transform: none;
-        background: var(--surface-hover) !important;
-        border-color: rgba(111,161,127, 0.55) !important;
-        box-shadow:
-            0 20px 44px rgba(16,24,19, 0.22),
-            0 0 24px rgba(143,190,155, 0.10) !important;
-    }
-
-    #projects .project-card.project-summary-featured .project-repo-btn:hover {
-        color: var(--text-on-dark) !important;
-        background: var(--bg-header) !important;
-        border-color: var(--border-strong) !important;
-        transform: none;
-    }
-}
-
 /* Experience accomplishments use the same contained, static check language as Projects. */
 #experience .experience-highlights {
     gap: 0.65rem;
@@ -11891,24 +11873,6 @@ header {
     }
 }
 
-@media (hover: none), (pointer: coarse) {
-    #education .education-card:not(.education-secondary-card):hover {
-        transform: none;
-        background: var(--surface) !important;
-        border-color: rgba(111,161,127, 0.55) !important;
-        box-shadow:
-            0 20px 44px rgba(16,24,19, 0.22),
-            0 0 24px rgba(143,190,155, 0.10) !important;
-    }
-
-    #education .education-secondary-card:hover {
-        transform: none;
-        background: var(--bg-section-secondary) !important;
-        border-color: var(--card-border-supporting) !important;
-        box-shadow: 0 10px 24px rgba(16,24,19, 0.10) !important;
-    }
-}
-
 @media (prefers-reduced-motion: reduce) {
     #education .education-card {
         transition: none;
@@ -11934,8 +11898,9 @@ header {
 #honors .honor-card {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    text-align: left;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     width: 100%;
     min-width: 0;
     min-height: 0;
@@ -11956,7 +11921,7 @@ header {
     height: clamp(3.5rem, 4vw, 4rem);
     flex: 0 0 auto;
     margin-inline: auto;
-    margin-bottom: 1.35rem;
+    margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11971,8 +11936,10 @@ header {
 #honors .honor-content {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
     min-width: 0;
+    text-align: center;
 }
 
 #honors .honor-content h3 {
@@ -11986,25 +11953,31 @@ header {
 
 #honors .honor-meta {
     display: grid;
-    gap: 0.4rem;
+    gap: 0.45rem;
+    width: fit-content;
+    max-width: 100%;
     min-width: 0;
-    margin-top: 0.85rem;
+    margin: 1rem auto 0;
+    align-items: center;
+    justify-items: center;
 }
 
 #honors .honor-meta-row {
-    display: grid;
-    grid-template-columns: 1rem minmax(0, 1fr);
-    column-gap: 0.45rem;
-    align-items: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    max-width: 100%;
+    gap: 0.45rem;
     margin: 0;
     min-width: 0;
 }
 
 #honors .honor-meta-row > i {
-    justify-self: center;
+    flex: 0 0 1rem;
     width: 1rem;
     height: 1rem;
-    margin-top: 0.08rem;
+    margin-top: 0;
     color: var(--accent-technical);
     font-size: 1rem;
     line-height: 1;
@@ -12014,14 +11987,14 @@ header {
 #honors .honor-meta-row > span {
     min-width: 0;
     color: inherit;
-    text-align: left;
+    text-align: center;
 }
 
 #honors .honor-role {
-    margin: 0.55rem 0 0;
-    color: var(--text-primary) !important;
+    margin: 0;
+    color: var(--accent-secondary) !important;
     font-size: 0.78rem;
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1.35;
 }
 
@@ -12041,7 +12014,7 @@ header {
 }
 
 #honors .honor-description {
-    margin: 1.1rem 0 0;
+    margin: 1.25rem 0 0;
     color: var(--text-secondary) !important;
     opacity: 0.9;
     font-size: 0.76rem;
@@ -12049,10 +12022,12 @@ header {
     overflow-wrap: anywhere;
 }
 
-@media (min-width: 1101px) {
-    #honors .honor-content h3 {
-        min-height: 2.5em;
-    }
+#honors .honor-content h3 + .honor-role {
+    margin-top: 0.7rem;
+}
+
+#honors .honor-role + .honor-meta {
+    margin-top: 0.75rem;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -12061,15 +12036,6 @@ header {
         background: var(--card-bg-supporting) !important;
         border-color: var(--card-border-supporting-hover) !important;
         box-shadow: var(--card-shadow-supporting-hover) !important;
-    }
-}
-
-@media (hover: none), (pointer: coarse) {
-    #honors .honor-card:hover {
-        transform: none;
-        background: var(--card-bg-supporting) !important;
-        border-color: var(--card-border-supporting) !important;
-        box-shadow: var(--card-shadow-supporting) !important;
     }
 }
 
@@ -12430,28 +12396,6 @@ header {
     }
 }
 
-@media (hover: none), (pointer: coarse) {
-    #contact .contact-form .contact-email-btn:hover,
-    #contact .contact-item:hover,
-    #contact .social-btn:hover {
-        transform: none;
-        background: var(--accent-primary) !important;
-        border-color: var(--accent-primary) !important;
-        box-shadow: 0 8px 18px rgba(16,24,19, 0.18) !important;
-    }
-
-    #contact .contact-item:hover,
-    #contact .social-btn:hover {
-        background: var(--forest-green) !important;
-        border-color: var(--border-subtle) !important;
-        box-shadow: var(--card-shadow-supporting) !important;
-    }
-
-    #contact .contact-form .contact-email-btn:hover {
-        color: var(--text-on-accent) !important;
-    }
-}
-
 @media (min-width: 768px) and (max-width: 1100px) {
     #contact .contact-item:last-child {
         grid-column: auto;
@@ -12722,15 +12666,6 @@ header {
     }
 }
 
-@media (hover: none), (pointer: coarse) {
-    #activities .activity-card:hover {
-        transform: none;
-        background: var(--section-light) !important;
-        border-color: var(--card-border-supporting) !important;
-        box-shadow: var(--card-shadow-supporting) !important;
-    }
-}
-
 @media (min-width: 900px) and (max-width: 1100px) {
     #activities .activities-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -12871,16 +12806,6 @@ header {
     }
 }
 
-@media (hover: none), (pointer: coarse) {
-    #projects .project-card.project-summary-featured .project-repo-btn:hover {
-        color: var(--text-secondary) !important;
-        background: var(--surface) !important;
-        border-color: var(--border) !important;
-        box-shadow: none !important;
-        transform: none;
-    }
-}
-
 #projects .project-card.project-summary-featured .project-repo-btn:focus-visible {
     outline: 3px solid rgba(143,190,155, 0.72);
     outline-offset: 3px;
@@ -12904,41 +12829,6 @@ header {
     #activities .activity-card:hover,
     #projects .project-card.project-summary-featured .project-repo-btn:hover {
         transform: none;
-    }
-}
-
-/* Responsive alignment audit: once the card presentations stack, center the
-   complete visual unit while keeping desktop information alignment intact. */
-@media (max-width: 1100px) {
-    #honors .honor-card,
-    #honors .honor-content,
-    #honors .honor-content h3,
-    #honors .honor-role,
-    #honors .honor-description {
-        text-align: center;
-    }
-
-    #honors .honor-meta {
-        width: fit-content;
-        max-width: 100%;
-        margin-inline: auto;
-        align-items: center;
-    }
-
-    #honors .honor-meta-row {
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        width: fit-content;
-        max-width: 100%;
-    }
-
-    #honors .honor-meta-row > i {
-        flex: 0 0 1rem;
-    }
-
-    #honors .honor-meta-row > span {
-        text-align: center;
     }
 }
 
@@ -13190,42 +13080,5 @@ header {
         box-shadow:
             0 22px 44px rgba(16,24,19, 0.24),
             0 0 24px rgba(143,190,155, 0.14) !important;
-    }
-}
-
-/* Decorative card hover must not persist on touch/no-hover devices. */
-@media (hover: none), (pointer: coarse) {
-    #about .about-text-card,
-    #experience .experience-panel,
-    #education .education-card,
-    #projects .project-card,
-    #skills .skills-card,
-    #activities .activity-card,
-    #honors .honor-card,
-    #contact .contact-item {
-        transition: none;
-    }
-
-    #about .about-text-card:hover,
-    #experience .experience-panel:hover,
-    #education .education-card:hover,
-    #projects .project-card:hover,
-    #skills .skills-card:hover,
-    #activities .activity-card:hover,
-    #honors .honor-card:hover,
-    #contact .contact-item:hover {
-        transform: none !important;
-    }
-
-    #projects .project-card:not(.project-summary-featured):hover {
-        background: var(--surface-hover) !important;
-        border-color: var(--border) !important;
-        box-shadow: 0 12px 26px rgba(16,24,19, 0.16) !important;
-    }
-
-    #skills .skills-card:hover {
-        background: var(--surface) !important;
-        border-color: var(--border) !important;
-        box-shadow: 0 12px 30px rgba(16,24,19, 0.10) !important;
     }
 }
