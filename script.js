@@ -340,9 +340,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const submitButton = contactForm?.querySelector('button[type="submit"]');
 
     if (contactForm && statusMessage && submitButton) {
-        const EMAILJS_SERVICE_ID = "service_3uvsbni";
-        const EMAILJS_TEMPLATE_ID = "template_h9nlekg";
-        const EMAILJS_PUBLIC_KEY = "VkVXmCBWffsrQg6wy";
+        const EMAILJS_SERVICE_ID = "service_2164zqr";
+        const EMAILJS_TEMPLATE_ID = "template_dz2dgwf";
+        const EMAILJS_PUBLIC_KEY = "Wbb1rAfuCioW8KCtJ";
         let statusHideTimer = null;
 
         const clearStatusMessage = () => {
