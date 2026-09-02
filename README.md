@@ -1,73 +1,144 @@
 # 💼 Client Portfolio Website
 
-A responsive client portfolio website designed and developed to showcase **professional experience, education, projects, skills, leadership activities, honors, and a background across finance and supply chain management**.
+A responsive portfolio website designed and developed for a client to showcase her professional experience, education, projects, skills, activities, and honors.
 
-Built from the ground up with **HTML, CSS, and JavaScript**, deployed through **GitHub Pages**, and connected to a custom domain with HTTPS.
+I built the website from the ground up with HTML, CSS, and JavaScript, created a design around the client's content and personal branding, and deployed the finished site through GitHub Pages with a custom domain and HTTPS.
 
 🌐 **Live Website:** [shaylabernal.com](https://shaylabernal.com)
 
 ---
 
-## 📸 Project Preview
+## 🛠️ Technologies Used
+
+- HTML5
+- CSS3
+- JavaScript
+- EmailJS
+- Git & GitHub
+- GitHub Pages
+- Custom Domain
+- HTTPS
+- Visual Studio Code
+
+---
+
+## 🎨 1. Design the Client Portfolio
+
+I started by organizing the client's information into a portfolio that would be easy to navigate and present her background professionally.
+
+The website includes sections for:
+
+- Home
+- About
+- Experience
+- Education
+- Skills
+- Projects
+- Activities
+- Honors
+- Contact
+
+I created a custom visual style using a green and neutral color palette, consistent typography, cards, buttons, and section layouts throughout the website.
+
+Rather than using a website builder or portfolio template, I created the structure and styling directly with HTML and CSS.
 
 ### Desktop
+
 ![Client Portfolio Desktop View](assets/images/home/home-view.png)
 
+---
+
+## 📱 2. Build the Responsive Layout
+
+I designed the website to work across desktop, tablet, and mobile screen sizes.
+
+As the screen gets smaller, the layout adjusts its:
+
+- Navigation
+- Content positioning
+- Cards and grids
+- Images
+- Typography
+- Spacing
+- Buttons
+- Forms
+
+The desktop navigation also changes to a hamburger menu on smaller screens so the website remains easy to navigate.
+
 ### Responsive
+
 ![Client Portfolio Responsive View](assets/images/home/home-responsive.png)
 
 ### Mobile
+
 ![Client Portfolio Mobile View](assets/images/home/home-view-mobile.png)
 
 ---
 
-## 🎯 Project Overview
+## ⚙️ 3. Add Website Interactions
 
-I designed and developed this website as a custom portfolio for **Shayla Bernal**, providing a central platform for presenting her professional experience, education, business skills, projects, leadership involvement, honors, and continued professional development.
+I used JavaScript to handle the interactive parts of the website.
 
-Rather than using a website builder or portfolio template, the site was built directly with **HTML, CSS, and JavaScript**, providing full control over its structure, styling, responsive behavior, and interactive functionality.
+The site includes:
 
----
+- Responsive navigation
+- Mobile hamburger menu
+- Active navigation states
+- Interactive buttons and links
+- Contact form behavior
+- Success and error messages
 
-## ✨ Key Features
-
-- 📱 **Responsive Design** — Optimized layouts across desktop, tablet, and mobile devices
-- 🧭 **Responsive Navigation** — Desktop navigation with an adaptive hamburger menu
-- 💼 **Professional Portfolio** — Dedicated sections for experience, education, projects, skills, activities, and honors
-- 🎨 **Custom Client Design** — Visual identity and content presentation tailored specifically to the client
-- 🖥️ **Interactive Frontend** — JavaScript-powered navigation, interface behavior, and form handling
-- 📬 **Contact Integration** — Functional contact form powered by EmailJS
-- ♿ **Accessibility** — Keyboard focus states, reduced-motion support, and semantic accessibility considerations
-- 🌐 **Production Deployment** — GitHub Pages hosting with a custom domain and HTTPS
+I also included keyboard focus states and reduced-motion support to improve accessibility.
 
 ---
 
-## 🛠️ Technology Stack
+## 📬 4. Connect the Contact Form
 
-| Area | Technologies |
-| --- | --- |
-| **Structure** | HTML5 |
-| **Styling** | CSS3 |
-| **Interactivity** | JavaScript |
-| **Contact** | EmailJS |
-| **Version Control** | Git, GitHub |
-| **Hosting** | GitHub Pages |
-| **Development** | Visual Studio Code |
-| **Domain** | Custom Domain + HTTPS |
+I connected the website's contact form to **EmailJS** so visitors can send messages directly through the website without requiring a custom backend server.
+
+The form collects:
+
+- Name
+- Email
+- Subject
+- Message
+
+JavaScript handles the form submission and displays a success or error message depending on the result.
+
+```text
+Visitor
+   │
+   ▼
+Contact Form
+   │
+   ▼
+EmailJS
+   │
+   ▼
+Client Email
+```
 
 ---
 
-## 📱 Responsive Design
+## 📄 5. Add Resume Access
 
-The website was designed to adapt its layout and navigation across different viewport sizes rather than simply scaling down the desktop experience.
+I added the client's resume to the website as a PDF so visitors can easily access her professional information.
 
-Responsive behavior includes adjustments to **navigation, typography, spacing, content positioning, cards, images, buttons, forms, and header behavior** across desktop, tablet, mobile, portrait, and landscape layouts.
+The resume is stored within the project's assets:
+
+```text
+assets/documents/resume.pdf
+```
+
+Keeping documents separate from images and other website assets makes the project easier to organize and maintain.
 
 ---
 
-## 🚀 Deployment
+## 🌐 6. Deploy the Website
 
-The website follows a Git-based deployment workflow:
+Once the website was ready, I pushed the project to GitHub and deployed it using GitHub Pages.
+
+The deployment flow is:
 
 ```text
 Local Development
@@ -82,4 +153,70 @@ Local Development
  GitHub Pages
        │
        ▼
- Custom Domain + HTTPS
+ Custom Domain
+       │
+       ▼
+shaylabernal.com
+```
+
+I connected the custom domain and configured HTTPS so the finished website could be accessed securely through:
+
+**[shaylabernal.com](https://shaylabernal.com)**
+
+---
+
+## 🧠 What I Learned
+
+Building a website for someone else gave me experience working with requirements beyond my own preferences.
+
+I practiced:
+
+- Turning client information into a structured website
+- Creating a consistent visual design across multiple sections
+- Building responsive layouts with HTML and CSS
+- Using JavaScript for navigation and interface behavior
+- Creating a mobile navigation system
+- Integrating a contact form with EmailJS
+- Organizing website images, documents, and other assets
+- Testing layouts across different screen sizes
+- Using Git and GitHub to manage changes
+- Deploying a website with GitHub Pages
+- Connecting a custom domain and HTTPS
+
+The biggest takeaway was learning how to take someone else's content and requirements and turn them into a complete website that works across different devices.
+
+---
+
+## 📁 Repository Structure
+
+```text
+client-portfolio-website/
+│
+├── .github/
+│
+├── assets/
+│   ├── documents/
+│   │   └── resume.pdf
+│   │
+│   ├── favicons/
+│   │   ├── apple-touch-icon.png
+│   │   ├── favicon-96x96.png
+│   │   ├── favicon.ico
+│   │   ├── favicon.svg
+│   │   ├── site.webmanifest
+│   │   ├── web-app-manifest-192x192.png
+│   │   └── web-app-manifest-512x512.png
+│   │
+│   └── images/
+│       ├── about/
+│       ├── activities/
+│       ├── education/
+│       ├── experience/
+│       └── home/
+│
+├── CNAME
+├── README.md
+├── index.html
+├── script.js
+└── style.css
+```
